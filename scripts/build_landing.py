@@ -25,11 +25,13 @@ LANGS = {"en": (EN, ""), "es": (ES, "es/"), "fr": (FR, "fr/"), "hi": (HI, "hi/")
 ORDER = ["en", "es", "fr", "hi", "ru", "uk"]
 HOST = "https://parselex.app"
 DOCS = "https://docs.parselex.app"
-# The live auth-gated application (VPS fleet). The /login/ page is the single
-# entry point listing all services; CTAs lead there.
-APP = "https://lexregister.parselex.app"
-DASH = "https://dashboard.parselex.app/login"
-MCPHUB = "https://mcp-hub.parselex.app/login"
+# Fleet services behind /login/. While the applications are in final
+# development the sign-in cards link to the on-page waiting list (#waitlist);
+# these direct URLs come back at launch.
+# Studio = the main application, formerly "LexRegister" (renamed 2026-10).
+APP = "https://lexregister.parselex.app"       # Studio
+DASH = "https://dashboard.parselex.app/login"  # Admin Workspace
+MCPHUB = "https://mcp-hub.parselex.app/login"  # MCP Hub
 LOGIN = HOST + "/login/"
 LINKEDIN = "https://www.linkedin.com/company/parselex"
 CHANGELOG = HOST + "/changelog/"
@@ -665,24 +667,59 @@ else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add(
     )
 
 
+_WL_SCRIPT = """<script>
+(function(){
+  var f=document.getElementById('wlform'),m=document.getElementById('wlmsg'),b=document.getElementById('wlbtn');
+  if(!f||!m||!b){return}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    b.disabled=true;b.textContent='Subscribing\u2026';
+    fetch('https://formsubmit.co/ajax/contact@parselex.app',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        email:(f.elements.email.value||'').trim(),
+        _subject:'Parselex waiting list \u2014 new subscriber',
+        _template:'table',
+        _captcha:'false',
+        _honey:f.elements._honey.value
+      })
+    }).then(function(r){return r.json()}).then(function(j){
+      if(j&&(j.success===true||j.success==='true')){
+        m.textContent="You're on the list \u2014 thank you! We'll email you the moment access opens.";
+        m.className='wlmsg ok';b.textContent='Subscribed';
+      }else{throw new Error('rejected')}
+    }).catch(function(){
+      m.textContent='Something went wrong \u2014 please try again in a minute.';
+      m.className='wlmsg err';b.disabled=false;b.textContent='Join the waiting list';
+    });
+    m.hidden=false;
+  });
+})();
+</script>"""
+
+
 def render_login():
-    """Standalone sign-in hub page at /login/ — lists all fleet services."""
+    """Standalone sign-in hub page at /login/ — lists all fleet services.
+
+    While the applications are in final development every card links to the
+    on-page waiting list (#waitlist) instead of the service entry points.
+    """
     cards = (
-        ("LexRegister", "Main application",
-         "Create an account or sign in to Parselex", APP),
-        ("Application Dashboard", "Workspace",
-         "Main application workspace &amp; fleet status", DASH),
+        ("Studio", "Main application",
+         "The main Parselex application (user space): your documents, cases and workflows."),
+        ("Admin Workspace", "Administration",
+         "Sysadmin dashboard &#8212; fleet administration &amp; operational status."),
         ("MCP Hub", "Developers",
-         "Developer hub &amp; service status", MCPHUB),
+         "Developer hub &amp; service status."),
     )
     items = "".join(
-        f'<a class="lcard{" lcard-primary" if i == 0 else ""}"'
-        f' href="{url}" rel="noopener">'
+        f'<a class="lcard{" lcard-primary" if i == 0 else ""}" href="#waitlist">'
         f'<span class="lcard-kicker">{kick}</span>'
         f'<span class="lcard-name">{name}</span>'
         f'<span class="lcard-desc">{desc}</span>'
-        f'<span class="lcard-go">Open &#8594;</span></a>'
-        for i, (name, kick, desc, url) in enumerate(cards)
+        f'<span class="lcard-go">Coming soon &#8212; subscribe for updates &#8594;</span></a>'
+        for i, (name, kick, desc) in enumerate(cards)
     )
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -691,7 +728,7 @@ def render_login():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Sign in &#8212; Parselex</title>
-<meta name="description" content="Sign in to Parselex: LexRegister (main application), Application Dashboard and MCP Hub.">
+<meta name="description" content="Sign in to Parselex: Studio (main application), Admin Workspace and MCP Hub are in final development &#8212; join the waiting list and get launch updates.">
 <link rel="canonical" href="https://parselex.app/login/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#9878;</text></svg>">
 <style>
@@ -724,6 +761,22 @@ transition:transform .18s,box-shadow .18s,border-color .18s}}
 display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}}
 .lfoot a{{color:var(--navy2);text-decoration:none}}
 .lfoot a:hover{{color:var(--gold)}}
+html{{scroll-behavior:smooth}}
+.wl{{margin-top:44px;background:linear-gradient(180deg,var(--goldsoft),var(--bg) 70%);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px}}
+.wl h2{{font-size:21px;color:var(--navy);letter-spacing:-.01em}}
+.wl p{{color:var(--muted);font-size:14px;line-height:1.6;margin-top:8px;max-width:62ch}}
+.wlrow{{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}}
+.wlrow input[type=email]{{flex:1;min-width:220px;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-size:14.5px;color:var(--ink);background:var(--bg);outline:none;transition:border-color .15s,box-shadow .15s}}
+.wlrow input[type=email]:focus{{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldsoft)}}
+.wlrow button{{height:46px;padding:0 22px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s}}
+.wlrow button:hover{{background:var(--navy2)}}
+.wlrow button:disabled{{opacity:.65;cursor:default}}
+.hp{{position:absolute;left:-9999px;opacity:0;width:0;height:0}}
+.wlmsg{{margin-top:12px;font-size:13.5px;font-weight:600}}
+.wlmsg.ok{{color:#1A7F37}}
+.wlmsg.err{{color:#B42318}}
+.wlsmall{{font-size:12px;color:var(--muted);margin-top:12px}}
+.wlsmall a{{color:var(--navy2);text-decoration:underline}}
 </style>
 </head>
 <body>
@@ -733,14 +786,30 @@ display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;font-size:12.
 </div></nav>
 <main>
   <h1>Sign in to Parselex</h1>
-  <p class="sub">Choose where to go. All applications use your Parselex account &#8212;
-  access runs through LexZTNA, our Zero-Trust secure client.</p>
+  <p class="sub">All Parselex applications are in final development. Explore what&#8217;s
+  launching below and subscribe to be notified the moment your sign-in goes live &#8212;
+  every application will use your Parselex account through LexZTNA, our Zero-Trust secure client.</p>
   <div class="grid">{items}</div>
+  <section class="wl" id="waitlist">
+    <h2>Be the first to know</h2>
+    <p>Studio, Admin Workspace and MCP Hub are in final development. Leave your email
+    and we&#8217;ll notify you the moment access opens &#8212; launch news only, no spam.</p>
+    <form class="wlrow" id="wlform">
+      <input type="email" name="email" required placeholder="you@company.com" aria-label="Email address">
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" id="wlbtn">Join the waiting list</button>
+    </form>
+    <p class="wlmsg" id="wlmsg" hidden></p>
+    <p class="wlsmall">By joining you agree to receive launch updates from Parselex.
+    Prefer email? Write to <a href="mailto:contact@parselex.app">contact@parselex.app</a>
+    and we&#8217;ll add you manually.</p>
+  </section>
 </main>
 <footer class="lfoot">
   <span>&#9878; Parselex &#8212; Legal Document Intelligence Platform</span>
   <span><a href="https://docs.parselex.app" rel="noopener">Documentation</a></span>
 </footer>
+{_WL_SCRIPT}
 </body>
 </html>"""
 
@@ -748,6 +817,10 @@ display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;font-size:12.
 def render_changelog():
     """Public changelog at /changelog/ — product-facing 'alive signal' (EN)."""
     entries = [
+        ("2026-10", "Waiting list opens",
+         "Studio (the main application), Admin Workspace and MCP Hub are in final development. "
+         "The sign-in hub now carries a waiting list &#8212; subscribe and get notified the "
+         "moment access opens."),
         ("2026-10", "Ukrainian language",
          "The landing is now available in Ukrainian — the sixth language of the site "
          "(EN · ES · FR · HI · RU · UK)."),
