@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parselex — Plateforme d'Intelligence Documentaire Juridique</title>
+<meta name="description" content="Parselex automatise le cycle de vie complet du document juridique : OCR intelligent, analyse multilingue, rédaction et score de préparation du dossier (0–100). Produit en production, 7 catégories d'intelligence, 4 régions. Sécurité Zero-Trust par l'architecture.">
+<meta property="og:title" content="Parselex — Plateforme d'Intelligence Documentaire Juridique">
+<meta property="og:description" content="Parselex automatise le cycle de vie complet du document juridique : OCR intelligent, analyse multilingue, rédaction et score de préparation du dossier (0–100). Produit en production, 7 catégories d'intelligence, 4 régions. Sécurité Zero-Trust par l'architecture.">
+<meta property="og:url" content="https://parselex.app/fr/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://parselex.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://parselex.app/og.png">
+  <link rel="alternate" hreflang="en" href="https://parselex.app/">
+  <link rel="alternate" hreflang="es" href="https://parselex.app/es/">
+  <link rel="alternate" hreflang="fr" href="https://parselex.app/fr/">
+  <link rel="alternate" hreflang="hi" href="https://parselex.app/hi/">
+  <link rel="alternate" hreflang="ru" href="https://parselex.app/ru/">
+  <link rel="alternate" hreflang="uk" href="https://parselex.app/uk/">
+  <link rel="alternate" hreflang="x-default" href="https://parselex.app/">
+<link rel="canonical" href="https://parselex.app/fr/"><style>
+:root{--navy:#1B2A4A;--navy2:#2C4270;--navyD:#0F1A33;--gold:#C9953C;--gold2:#D4A843;
+--goldsoft:rgba(201,149,60,.14);--ink:#1F2937;--muted:#5B6B7F;--line:#E4E8EF;
+--bg:#FFFFFF;--soft:#F6F8FB;--green:#1A7F4C;--red:#C62828}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.6;font-size:15.5px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+section.alt{background:var(--soft)}
+.kicker{color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:clamp(29px,4.6vw,54px);line-height:1.14;letter-spacing:-.02em;font-weight:800;overflow-wrap:break-word}
+h2{font-size:clamp(25px,3.2vw,34px);line-height:1.2;letter-spacing:-.015em;font-weight:800;color:var(--navy)}
+h3{font-size:16.5px;font-weight:700;color:var(--navy)}
+.lead{color:var(--muted);font-size:17px;max-width:760px;margin-top:14px}
+.accent{color:var(--gold2)}
+.head{margin-bottom:38px}
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:14.5px;color:var(--navy)}
+.logo .mark{width:28px;height:28px;border-radius:7px;background:var(--navy);color:var(--gold2);
+display:grid;place-items:center;font-size:15px;letter-spacing:0}
+.navlinks{display:flex;gap:20px;margin-left:auto}
+.navlinks a{font-size:13.5px;font-weight:600;color:var(--muted)}
+.navlinks a:hover{color:var(--navy)}
+.langs{display:flex;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:3px}
+.langs a{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;color:var(--muted);letter-spacing:.04em}
+.langs a.on{background:var(--navy);color:#fff}
+.langs a:hover:not(.on){color:var(--navy)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:9px;cursor:pointer;
+transition:.18s;border:1px solid transparent}
+.btn-navy{background:var(--navy);color:#fff;padding:9px 16px;font-size:13.5px}
+.btn-navy:hover{background:var(--navy2)}
+.btn-gold{background:var(--gold);color:#fff;padding:13px 24px;font-size:15px}
+.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:#fff;padding:13px 24px;font-size:15px}
+.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2)}
+.btn-line{border-color:var(--line);color:var(--navy);padding:13px 24px;font-size:15px;background:#fff}
+.btn-line:hover{border-color:var(--navy)}
+.burger{display:none;margin-left:auto;background:none;border:0;font-size:22px;color:var(--navy);cursor:pointer}
+/* ---------- hero ---------- */
+.hero{background:radial-gradient(900px 420px at 78% -10%,rgba(201,149,60,.22),transparent 60%),
+radial-gradient(700px 380px at 8% 108%,rgba(44,66,112,.55),transparent 60%),linear-gradient(160deg,var(--navyD),var(--navy));
+color:#fff;padding:88px 0 66px}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,168,67,.5);color:var(--gold2);
+font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:99px;background:rgba(201,149,60,.1)}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(26,127,76,.25)}
+.hero .sub{color:rgba(255,255,255,.82);font-size:18px;max-width:730px;margin-top:20px}
+.hero .ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hero .note{margin-top:22px;color:rgba(255,255,255,.55);font-size:13px;letter-spacing:.02em}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px;
+border-top:1px solid rgba(255,255,255,.14);padding-top:28px}
+.hstat .n{font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--gold2);letter-spacing:-.01em}
+.hstat .l{color:rgba(255,255,255,.66);font-size:12.5px;margin-top:3px}
+/* ---------- cards & grids ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 1px 2px rgba(15,26,51,.04)}
+.card p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.num{font-size:13px;font-weight:800;color:var(--gold);letter-spacing:.1em}
+.ic{width:42px;height:42px;border-radius:10px;background:var(--goldsoft);color:var(--navy);
+display:grid;place-items:center;font-size:19px;margin-bottom:14px}
+.tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+color:var(--navy);background:var(--goldsoft);border:1px solid rgba(201,149,60,.35);border-radius:6px;padding:3px 8px}
+/* two-col platform lists */
+.twocol .card ul{list-style:none;margin-top:12px}
+.twocol li{padding:9px 0 9px 26px;position:relative;color:var(--ink);font-size:14.5px;border-top:1px dashed var(--line)}
+.twocol li:first-child{border-top:0}
+.twocol li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800}
+/* score */
+.scoregrid{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start}
+.bignum{font-size:clamp(52px,6vw,76px);font-weight:800;letter-spacing:-.03em;
+background:linear-gradient(100deg,var(--navy),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.scorebar{height:10px;border-radius:99px;background:linear-gradient(90deg,#E8EBF1 0%,var(--gold) 60%,var(--green) 100%);margin:16px 0 6px;position:relative;overflow:hidden}
+.scorebar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(255,255,255,.55) 46px 48px)}
+.dim{display:flex;gap:12px;padding:10px 0;border-top:1px dashed var(--line)}
+.dim:first-of-type{border-top:0}
+.dim .ck{color:var(--green);font-weight:800}
+.dim b{color:var(--navy)}
+.dim span.d{color:var(--muted);font-size:14px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.step{display:flex;gap:11px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 13px;align-items:flex-start}
+.step .i{min-width:24px;height:24px;border-radius:7px;background:var(--navy);color:var(--gold2);font-size:12px;font-weight:800;display:grid;place-items:center}
+.step p{font-size:13.5px;color:var(--ink)}
+.ribbon{margin-top:26px;background:linear-gradient(120deg,var(--navyD),var(--navy2));color:#fff;border-radius:14px;
+padding:20px 24px;display:flex;gap:14px;align-items:center;font-weight:600}
+.ribbon .r{font-size:22px;color:var(--gold2)}
+/* pipeline chips */
+.chips{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:16px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;font-size:13.5px;font-weight:700;color:var(--navy)}
+.ar{color:var(--gold);font-weight:800}
+.cascade{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.casc .card{padding:18px}
+.casc .cn{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:.1em}
+.softstrip{margin-top:20px;border:1px dashed rgba(201,149,60,.55);background:var(--goldsoft);
+border-radius:12px;padding:15px 20px;font-size:14.5px;color:var(--ink)}
+/* modules */
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.mod .mg{font-size:19px;color:var(--navy);background:var(--goldsoft);width:36px;height:36px;border-radius:9px;display:grid;place-items:center}
+.mod b{display:block;color:var(--navy);margin-top:10px;font-size:14px}
+.mod p{color:var(--muted);font-size:12.5px;margin-top:3px;line-height:1.5}
+/* metrics */
+.mstats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mstat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;text-align:left}
+.mstat .n{font-size:clamp(30px,3.4vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.mstat .l{color:var(--muted);font-size:13.5px;margin-top:4px}
+.casecard{margin-top:22px;background:linear-gradient(120deg,var(--navyD),var(--navy));border-radius:16px;color:#fff;padding:28px;display:grid;grid-template-columns:1.05fr 1fr;gap:26px}
+.casecard h3{color:#fff;font-size:18px}
+.casecard .ct{color:var(--gold2);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.casecard .rows{display:grid;gap:8px}
+.crow{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed rgba(255,255,255,.18);padding-bottom:8px;font-size:14px}
+.crow b{color:var(--gold2);font-weight:700;white-space:nowrap;text-align:right}
+.crow span{color:rgba(255,255,255,.85)}
+.qlist{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;margin-top:14px}
+.qlist div{padding-left:24px;position:relative;color:var(--muted);font-size:14px}
+.qlist div::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+/* compare */
+.cmp .card{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cmp .grp b{color:var(--navy);font-size:16px}
+.cmp .who{color:var(--muted);font-size:13.5px;margin-top:5px}
+.cmp .lim{color:var(--red);font-size:13.5px;margin-top:8px;display:flex;gap:8px}
+.cmp .win{color:var(--ink);font-size:14.5px;display:flex;gap:10px}
+.cmp .win::before{content:"✓";color:var(--green);font-weight:800}
+.cmp .win b{color:var(--navy)}
+.cmp .card + .card{margin-top:14px}
+/* pricing */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.tier{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;position:relative}
+.tier.hot{background:linear-gradient(160deg,var(--navyD),var(--navy2));color:#fff;border-color:var(--navy)}
+.tier .tn{font-size:18px;font-weight:800;color:var(--navy)}
+.tier.hot .tn{color:#fff}
+.tier .tf{color:var(--muted);font-size:13.5px;margin-top:3px}
+.tier.hot .tf{color:rgba(255,255,255,.72)}
+.tier ul{list-style:none;margin:16px 0 22px;flex:1}
+.tier li{padding:7px 0 7px 24px;position:relative;font-size:14px;border-top:1px dashed var(--line)}
+.tier.hot li{border-top-color:rgba(255,255,255,.15)}
+.tier li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800}
+.tier .btn{justify-content:center}
+.pop{position:absolute;top:-11px;right:18px;background:var(--gold);color:#fff;font-size:10.5px;font-weight:800;
+letter-spacing:.09em;text-transform:uppercase;border-radius:99px;padding:5px 12px}
+.tier .btn-navy{width:100%;justify-content:center}
+.tier.hot .btn-gold{width:100%}
+.pnote{text-align:center;color:var(--muted);font-size:13.5px;margin-top:20px}
+/* market */
+.mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mcard .mn{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.mcard .mt{color:var(--gold);font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+/* roadmap */
+.timeline{position:relative;margin-top:8px;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),var(--line))}
+.tl{position:relative;padding:0 0 26px 18px}
+.tl:last-child{padding-bottom:0}
+.tl::before{content:"";position:absolute;left:-26px;top:5px;width:16px;height:16px;border-radius:50%;
+background:#fff;border:3px solid var(--gold)}
+.tl .yr{display:inline-block;background:var(--navy);color:var(--gold2);font-size:11.5px;font-weight:800;letter-spacing:.08em;
+border-radius:6px;padding:3px 10px;margin-bottom:6px}
+.tl b{color:var(--navy);display:block}
+.tl span{color:var(--muted);font-size:14px}
+/* cta */
+.ctaband{background:radial-gradient(700px 300px at 85% 0%,rgba(201,149,60,.28),transparent 60%),linear-gradient(140deg,var(--navyD),var(--navy));
+border-radius:20px;color:#fff;padding:56px 40px;text-align:center}
+.ctaband .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+/* footer */
+footer{background:var(--navyD);color:rgba(255,255,255,.72);padding:52px 0 30px;font-size:13.5px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+footer h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+footer .fl{display:grid;gap:9px}
+footer a{overflow-wrap:anywhere}
+footer a:hover{color:var(--gold2)}
+.flogo{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;letter-spacing:.16em}
+.flogo .mark{width:28px;height:28px;border-radius:7px;background:rgba(212,168,67,.15);color:var(--gold2);display:grid;place-items:center;font-size:15px}
+.fbottom{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:rgba(255,255,255,.45);font-size:12.5px}
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+/* responsive */
+@media(max-width:1020px){
+ .grid3,.mcards,.mstats{grid-template-columns:1fr 1fr}
+ .mods{grid-template-columns:1fr 1fr 1fr}
+ .cascade{grid-template-columns:1fr 1fr}
+ .scoregrid,.casecard{grid-template-columns:1fr}
+ .cmp .card{grid-template-columns:1fr}
+ .grid4{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:1080px){
+ .navlinks{display:none;position:absolute;top:60px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);
+ flex-direction:column;padding:16px 24px;gap:14px}
+ .navlinks.open{display:flex}
+ .langs{margin-left:auto}
+ .burger{display:block;margin-left:0}
+}
+@media(max-width:720px){
+ .nav .wrap{gap:10px}
+ .logo{font-size:12.5px;letter-spacing:.09em;gap:7px}
+ .langs{margin-left:auto;padding:2px}
+ .langs a{padding:3px 6px;font-size:10.5px}
+ .nav .btn-navy{display:none}
+ .fgrid{grid-template-columns:1fr;gap:26px}
+ .crow{flex-direction:column;gap:2px}
+ .crow b{white-space:normal;text-align:left}
+ .grid3,.grid2,.mstats,.mcards,.tiers,.steps,.qlist,.cascade{grid-template-columns:1fr}
+ .mods{grid-template-columns:1fr 1fr}
+ .grid4{grid-template-columns:1fr!important}
+ .twocol .card+.card{margin-top:14px}
+ .hstats{grid-template-columns:1fr 1fr;gap:20px}
+ .ctaband{padding:40px 22px}
+ .casecard{padding:22px}
+ section{padding:56px 0}
+}
+@media(max-width:400px){
+ .h1,h1{font-size:27px}
+}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head><body>
+<nav class="nav"><div class="wrap">
+  <a class="logo" href="#"><span class="mark">⚿</span>PARSELEX</a>
+  <div class="navlinks" id="navlinks"><a href="#platform">Plateforme</a><a href="#score">Score du dossier</a><a href="#security">Sécurité</a><a href="#product">Produit</a><a href="#metrics">Métriques</a><a href="#pricing">Tarifs</a><a href="https://docs.parselex.app" target="_blank" rel="noopener">Documentation</a></div>
+  <div class="langs"><a href="../" class="">EN</a><a href="../es/" class="">ES</a><a href="./" class="on">FR</a><a href="../hi/" class="">HI</a><a href="../ru/" class="">RU</a><a href="../uk/" class="">UK</a></div>
+  <a class="btn btn-navy" href="https://parselex.app/login/">Ouvrir Parselex</a>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</div></nav>
+<header class="hero"><div class="wrap">
+  <span class="badge"><span class="dot"></span>Produit en production — dossiers réels en cours</span>
+  <h1 style="margin-top:22px">Plateforme d'<span class='accent'>Intelligence Documentaire</span> Juridique</h1>
+  <p class="sub">Parselex automatise le cycle de vie complet du document juridique — ingestion depuis toute source, analyse approfondie, rédaction et un score objectif de préparation du dossier. Un système unique qui raisonne le dossier avec l'avocat, au-delà de la simple recherche de texte.</p>
+  <div class="ctas"><a class="btn btn-gold" href="https://parselex.app/login/">Ouvrir Parselex</a>
+  <a class="btn btn-ghost" href="https://docs.parselex.app" target="_blank" rel="noopener">Lire la documentation</a></div>
+  <p class="note">parselex.app · architecture indépendante des fournisseurs · 2026</p>
+  <div class="hstats"><div class="hstat"><div class="n">99,6 %</div><div class="l">traitements réussis</div></div><div class="hstat"><div class="n">7</div><div class="l">catégories d'intelligence</div></div><div class="hstat"><div class="n">4</div><div class="l">juridictions dans un dossier réel</div></div><div class="hstat"><div class="n">2 500+</div><div class="l">documents dans les pipelines de production</div></div></div>
+</div></header>
+<section id="problem"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Le défi</p><h2>Les équipes juridiques se noient sous les documents</h2><p class="lead">Le traitement manuel crée des goulots d'étranglement critiques, multiplie le risque d'erreur humaine et ralentit chaque décision qui compte.</p></div>
+  <div class="grid3"><div class="card"><div class="num">01</div><h3 style="margin-top:8px">Volume de données explosif</h3><p>Une seule affaire pénale peut compter de 200 à 2 000 documents. Des millions de fichiers juridiques sont générés chaque année dans le monde — chacun exigeant analyse et classification.</p></div><div class="card"><div class="num">02</div><h3 style="margin-top:8px">Routine manuelle</h3><p>Les juristes consacrent jusqu'à 40 % de leur temps au traitement documentaire. L'analyse complète d'une affaire complexe prend des semaines, souvent des mois.</p></div><div class="card"><div class="num">03</div><h3 style="margin-top:8px">Erreurs et risques</h3><p>Le facteur humain entraîne des preuves manquées, des contradictions dans les témoignages et des écarts dans les pièces financières — précisément les lacunes qui décident de l'issue.</p></div></div>
+  <h3 style="margin:44px 0 18px;font-size:20px" class="reveal">Pourquoi l'IA générique n'y répond pas</h3>
+  <div class="grid3 reveal"><div class="card"><div class="ic">⊗</div><h3>Réponses superficielles et hallucinations</h3><p>Les chatbots généralistes produisent des résultats plausibles mais faux : précision de 42–65 %, taux d'hallucination jusqu'à 33 %. Vérifier leurs réponses prend plus de temps que rédiger le document de zéro.</p></div><div class="card"><div class="ic">❄</div><h3>Aucune approche systémique</h3><p>Les outils ponctuels traitent des requêtes isolées — ils ne voient jamais l'affaire dans son ensemble et ne relient pas les sources : e-mails, messageries, scans.</p></div><div class="card"><div class="ic">⚿</div><h3>Risques de confidentialité</h3><p>Téléverser des données sensibles vers des modèles d'IA publics crée des risques de fuite ; la plupart des outils ne garantissent aucun isolement des données.</p></div></div>
+</div></section>
+<section id="platform" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">La plateforme</p><h2>Une plateforme d'IA juridique à cycle complet</h2><p class="lead">Parselex accompagne le dossier sur tout son cycle de vie : de l'ingestion des documents depuis toute source à l'analyse approfondie, la rédaction et une évaluation objective de la préparation. Un système unique qui raisonne avec l'avocat — avec une architecture indépendante des fournisseurs : la cascade de modèles s'adapte, votre flux de travail reste intact.</p></div>
+  <div class="grid2 twocol reveal">
+    <div class="card"><h3>Ingénierie documentaire</h3><ul><li>OCR intelligent — documents scannés, chats WhatsApp et Telegram</li><li>Classification automatique avec score de pertinence</li><li>Traduction juridique multilingue avec contrôle qualité en trois étapes</li><li>Contrôles d'intégrité — chronologie, références croisées, arithmétique, sémantique</li><li>Génération de projets d'actes prêts à être déposés</li></ul></div>
+    <div class="card"><h3>Analytique et expertise IA</h3><ul><li>Recherche IA sur tout le corpus — réponses avec citations des documents précis</li><li>Analyse multi-étapes — cohérence, contradictions, narratif, preuves</li><li>Score de préparation du dossier (0–100) — rattachement des chefs et analyse des lacunes</li><li>Boucle fermée : Classification → Analyse → Évaluation → Rapport</li><li>Scellé forensique des preuves — l'intégrité de chaque fichier est préservée</li></ul></div>
+  </div>
+</div></section>
+<section id="sectors"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Domaines de pratique</p><h2>Construit sur la pratique réelle, pas sur des hypothèses</h2><p class="lead">Chaque catégorie naît de la charge réelle de dossiers — ce type d'affaires où chaque document est une preuve potentielle.</p></div>
+  <div class="grid4 reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px"><div class="card"><div class="ic">⛨</div><span class="tag">FINREG</span><h3 style="margin-top:10px">Fraude bancaire</h3><p>Accès non autorisé et détournement de fonds : relevés, journaux de paiements, réclamations et correspondance. Vérification automatique de l'arithmétique et de la chronologie, détection des contradictions entre témoignages.</p></div><div class="card"><div class="ic">$</div><span class="tag">Dossier FIR réel</span><h3 style="margin-top:10px">Fraude aux cryptomonnaies</h3><p>Affaires de cryptofraude et d'investigations blockchain. Un cas transfrontalier démontré : un schéma organisé avec 9 prévenus dans 4 juridictions — 91 documents traités par la plateforme.</p></div><div class="card"><div class="ic">⚖</div><span class="tag">AML · KYC</span><h3 style="margin-top:10px">Lutte anti-blanchiment</h3><p>Analyse des schémas de blanchiment : chaînes de transactions, origine des fonds, documentation de conformité. Un domaine à part entière de la plateforme aux côtés du pénal et du civil.</p></div><div class="card"><div class="ic">▦</div><span class="tag">Civil</span><h3 style="margin-top:10px">Litiges du travail</h3><p>Dossiers RH, contrats, notes de service et correspondance interne. Détection des contradictions entre documents et préparation de la position pour le procès.</p></div></div>
+  <p class="softstrip reveal"><b>7 catégories d'intelligence</b> — Criminal · Civil · COMM (commercial international) · ECOM (e-commerce et protection du consommateur) · FINREG (régulation financière et AML) · IP · Litigation Support — sur <b>4 régions</b> : Amérique/États-Unis, Europe, Asie, Inde. Extensible selon la pratique du client.</p>
+</div></section>
+<section id="score" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Capacité phare</p><h2>Score de préparation du dossier — de 0 à 100</h2><p class="lead">Pas de la génération de texte — de l'expertise de dossier. Une évaluation numérique avec rattachement automatique des preuves et analyse des lacunes, unique sur le marché actuel.</p></div>
+  <div class="scoregrid">
+    <div class="card reveal">
+      <div class="bignum">0–100</div>
+      <p style="color:var(--muted)">score numérique de préparation du dossier</p>
+      <div class="scorebar"></div>
+      <div class="dim"><span class="ck">✓</span><div><b>Base probatoire</b> — <span class="d">complétude et fiabilité de chaque preuve</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Rattachement des chefs</b> — <span class="d">preuves liées à des chefs d'accusation précis</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Analyse des lacunes</b> — <span class="d">preuves manquantes et points faibles détectés automatiquement</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Théorie du dossier</b> — <span class="d">cohérence interne et force de persuasion du narratif</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Lignes de risque</b> — <span class="d">axes d'attaque probables de la défense</span></div></div>
+    </div>
+    <div class="reveal">
+      <h3 style="font-size:18px">Au cœur de l'analyse IA en 8 étapes</h3>
+      <div class="steps"><div class="step"><span class="i">1</span><p>Cohérence et connectivité des documents</p></div><div class="step"><span class="i">2</span><p>Détection des contradictions entre témoignages</p></div><div class="step"><span class="i">3</span><p>Analyse contextuelle — séquence et logique</p></div><div class="step"><span class="i">4</span><p>Évaluation de la qualité des preuves</p></div><div class="step"><span class="i">5</span><p>Conformité aux normes légales</p></div><div class="step"><span class="i">6</span><p>Exactitude de la terminologie juridique</p></div><div class="step"><span class="i">7</span><p>Évaluation des risques et vulnérabilités</p></div><div class="step"><span class="i">8</span><p>Verdict final de préparation</p></div></div>
+    </div>
+  </div>
+  <div class="ribbon reveal"><span class="r">⚖</span><p>Avantage clé : un score numérique de préparation du dossier (0–100). Aucun concurrent sur le marché n'en propose l'équivalent.</p></div>
+</div></section>
+<section id="security"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Sécurité</p><h2>La sécurité par l'architecture, pas par la promesse</h2><p class="lead">Parselex est conçu pour les exigences de confidentialité de la pratique juridique et bancaire : accès Zero-Trust, anonymisation sur l'appareil et déploiement dans votre propre périmètre.</p></div>
+  <div class="grid2 reveal"><div class="card"><div class="ic">⛨</div><h3>LexZTNA — accès Zero-Trust</h3><p>Aucun endpoint public. Les espaces de travail ne sont accessibles que via le client sécurisé LexZTNA — tunnels mesh chiffrés, vérification des appareils et accès aux privilèges minimaux.</p></div><div class="card"><div class="ic">⚿</div><h3>Pare-feu éthique — anonymisation des PII</h3><p>Noms, identifiants et numéros de compte sont remplacés par des jetons déterministes sur votre appareil avant transmission — une valeur correspond à un jeton, si bien que l'IA conserve la cohérence des entités. La réidentification s'effectue localement au retour.</p></div><div class="card"><div class="ic">⚙</div><h3>Déploiement on-premise</h3><p>Des modèles à poids ouverts s'exécutent dans votre infrastructure : l'inférence et la recherche sémantique n'appellent jamais d'API d'IA externes et les documents ne quittent jamais votre périmètre.</p></div><div class="card"><div class="ic">✓</div><h3>Conformité et audit</h3><p>Isolement des données par utilisateur, journal complet des actions et contrôle des droits à chaque opération — s'intègre aux politiques de sécurité de l'information. Minimisation des données alignée sur le RGPD, le CCPA et l'ABA Model Rule 1.6.</p></div></div>
+  <p class="softstrip reveal" style="margin-top:22px">→ <b>Pilote en 4–8 semaines</b> — sur vos documents, dans votre périmètre sécurisé → score de préparation du dossier (0–100) → engagement Professional ou Enterprise</p>
+</div></section>
+<section id="architecture" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Sous le capot</p><h2>Un système d'IA multi-niveaux</h2><p class="lead">Une cascade de modèles d'IA sans dépendre d'un fournisseur unique — de l'embedding et de la recherche à la génération de texte et au scoring des dossiers.</p></div>
+  <h3 class="reveal" style="font-size:17px">Le pipeline de traitement en 7 étapes</h3>
+  <div class="chips reveal"><span class="chip">Ingest</span><span class="ar">→</span><span class="chip">OCR</span><span class="ar">→</span><span class="chip">Classification</span><span class="ar">→</span><span class="chip">Validation</span><span class="ar">→</span><span class="chip">RAG Analysis</span><span class="ar">→</span><span class="chip">AI Translation</span><span class="ar">→</span><span class="chip">Report</span></div>
+  <h3 class="reveal" style="font-size:17px;margin-top:34px">Une cascade de modèles à 4 niveaux qui ne s'arrête jamais</h3>
+  <div class="casc cascade reveal"><div class="card"><div class="cn">01</div><h3 style="margin-top:6px;font-size:15px">Modèle cloud principal</h3><p style="font-size:13.5px">Rapide et économique pour la charge quotidienne</p></div><div class="card"><div class="cn">02</div><h3 style="margin-top:6px;font-size:15px">Second fournisseur cloud</h3><p style="font-size:13.5px">Bascule automatique — le travail ne s'interrompt jamais</p></div><div class="card"><div class="cn">03</div><h3 style="margin-top:6px;font-size:15px">Modèle local on-premise</h3><p style="font-size:13.5px">S'exécute dans votre périmètre, coût par requête nul</p></div><div class="card"><div class="cn">04</div><h3 style="margin-top:6px;font-size:15px">Réserve supplémentaire</h3><p style="font-size:13.5px">Continuité de service même en cas de panne fournisseur</p></div></div>
+  <p class="softstrip reveal">Recherche sémantique multilingue — EN · RU · HI · NP · KZ · TR — avec sélection automatique de la juridiction. <b>Déploiement dans votre périmètre :</b> modèles à poids ouverts, aucun appel à des API d'IA externes, documents jamais transmis à des tiers.</p>
+</div></section>
+<section id="product"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Produit</p><h2>Un espace de travail pour tout le cycle du dossier</h2><p class="lead">Une interface web unique, du téléversement des documents à l'évaluation de préparation — douze modules couvrent le cycle complet.</p></div>
+  <div class="mods reveal"><div class="mod"><div class="mg">◌</div><b>Chat IA du dossier</b><p>réponses avec citations des documents précis</p></div><div class="mod"><div class="mg">▤</div><b>Documents</b><p>téléversement, recherche et gestion des pièces</p></div><div class="mod"><div class="mg">▦</div><b>Bibliothèque</b><p>catalogue catégorisé de documents juridiques</p></div><div class="mod"><div class="mg">✎</div><b>Rédaction</b><p>projets d'actes assistés par IA</p></div><div class="mod"><div class="mg">▦</div><b>Analyse</b><p>analyse en boucle fermée avec suivi des itérations</p></div><div class="mod"><div class="mg">✓</div><b>Score du dossier</b><p>0–100, rattachement des preuves, analyse des lacunes</p></div><div class="mod"><div class="mg">◯</div><b>Juridiction</b><p>7 domaines : pénal, civil, AML/KYC, IP</p></div><div class="mod"><div class="mg">✿</div><b>Pipeline</b><p>traitement de masse : statut et historique</p></div><div class="mod"><div class="mg">▦</div><b>Modules</b><p>extensions flexibles selon les besoins</p></div><div class="mod"><div class="mg">⚙</div><b>Options</b><p>configuration de la plateforme par pratique</p></div><div class="mod"><div class="mg">♟</div><b>Utilisateurs</b><p>gestion des accès et journal des actions</p></div><div class="mod"><div class="mg">▦</div><b>Analytique du corpus</b><p>statistiques et supervision du traitement</p></div></div>
+</div></section>
+<section id="metrics" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Preuves</p><h2>Démontré sur des dossiers réels</h2><p class="lead">Des chiffres de production sur des charges réelles — pas des conditions de démonstration.</p></div>
+  <div class="mstats"><div class="mstat reveal"><div class="n">99,6 %</div><div class="l">traitements réussis</div></div><div class="mstat reveal"><div class="n">95 %</div><div class="l">métadonnées extraites automatiquement</div></div><div class="mstat reveal"><div class="n">2 500+</div><div class="l">documents dans les pipelines de production</div></div><div class="mstat reveal"><div class="n">2 309</div><div class="l">contrôles automatisés par version</div></div><div class="mstat reveal"><div class="n">7</div><div class="l">catégories d'intelligence</div></div><div class="mstat reveal"><div class="n">4</div><div class="l">juridictions dans un dossier réel</div></div></div>
+  <div class="casecard reveal">
+    <div><p class="ct">Dossier réel à la une</p><h3 style="margin-top:8px">Poursuite transfrontalière pour cryptofraude</h3>
+    <p style="color:rgba(255,255,255,.75);font-size:14px;margin-top:12px">Un schéma organisé de fraude enquêté simultanément dans quatre juridictions — le dossier entier passe par la plateforme : de l'ingestion à l'évaluation de préparation.</p></div>
+    <div class="rows"><div class="crow"><span>Prévenus</span><b>9 · 4 juridictions</b></div><div class="crow"><span>Documents traités</span><b>91</b></div><div class="crow"><span>Fragments dans la base de connaissances</span><b>792 · tout interrogeable par l'IA</b></div><div class="crow"><span>Documents pertinents isolés</span><b>52</b></div><div class="crow"><span>Domaine</span><b>pénal · blockchain</b></div></div>
+  </div>
+  <h3 class="reveal" style="margin-top:30px;font-size:17px">Ingénierie qualité</h3>
+  <div class="qlist reveal"><div>Auto-vérification des versions — chaque version passe le cycle complet de contrôles</div><div>Suite de tests automatisés — 2 309 contrôles de code</div><div>Contrôles automatiques des scénarios clés de l'interface</div><div>Mesure hebdomadaire de la qualité de recherche en production</div></div>
+</div></section>
+<section id="compare"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Paysage concurrentiel</p><h2>Où se situe Parselex</h2><p class="lead">Le marché se divise en trois groupes — et chacun s'arrête là où commence le vrai travail du dossier.</p></div>
+  <div class="cmp"><div class="card reveal"><div class="grp"><b>Géants du LegalTech</b><p class="who">Thomson Reuters (Westlaw, CoCounsel) · LexisNexis</p><p class="lim"><span>⊗</span>Axés sur les bases de données et la recherche ; précision de 42–65 %, hallucinations jusqu'à 33 %.</p></div><p class="win"><span><b>L'expertise approfondie du dossier plutôt que la recherche —</b> le système évalue la préparation du dossier, pas seulement des documents.</span></p></div><div class="card reveal"><div class="grp"><b>Assistants IA pour juristes</b><p class="who">Harvey · Spellbook · Kannon</p><p class="lim"><span>⊗</span>Profondeur limitée à la génération ; pas d'évaluation du dossier ; intégrations souvent étroites.</p></div><p class="win"><span><b>Analyse autonome et analyse des lacunes —</b> une expertise qui révèle les points faibles sans humain à chaque étape.</span></p></div><div class="card reveal"><div class="grp"><b>Plateformes d'automatisation</b><p class="who">LexCheck · Luminance · Ironclad</p><p class="lim"><span>⊗</span>Essentiellement contrats et due diligence ; couverture juridictionnelle souvent limitée.</p></div><p class="win"><span><b>7 domaines juridiques et 4 régions —</b> pénal, civil, commercial, AML et plus encore, avec les spécificités régionales.</span></p></div></div>
+  <div class="ribbon reveal"><span class="r">✓</span><p>Avantage clé : le score numérique de préparation du dossier (0–100) — aucun concurrent n'en propose l'équivalent.</p></div>
+</div></section>
+<section id="pricing" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Monétisation</p><h2>Modèle hybride, prêt pour l'entreprise</h2><p class="lead">Abonnements SaaS pour les équipes et solutions d'entreprise avec déploiement on-premise et entraînement de modèles sur mesure — optimisés pour chaque segment du marché juridique.</p></div>
+  <div class="tiers"><div class="tier reveal"><div class="tn">Starter</div><div class="tf">Pour les pilotes et petites équipes</div><ul><li>Corpus jusqu'à 500 documents</li><li>Recherche IA et classification documentaire</li><li>Contrôles automatiques de base</li><li>Support par e-mail</li></ul><a class="btn btn-navy" href="https://parselex.app/login/">Lancer un pilote</a></div><div class="tier hot reveal"><span class="pop">Recommandé</span><div class="tn">Professional</div><div class="tf">Pour les équipes juridiques en production</div><ul><li>Corpus jusqu'à 5 000 documents</li><li>Tous les modules de la plateforme</li><li>Score de préparation du dossier</li><li>Support prioritaire</li></ul><a class="btn btn-gold" href="https://parselex.app/login/">Demander un tarif</a></div><div class="tier reveal"><div class="tn">Enterprise</div><div class="tf">Pour les institutions et banques</div><ul><li>Corpus illimité</li><li>Déploiement on-premise dans votre périmètre</li><li>Affinage de modèles sur mesure</li><li>Support dédié avec SLA</li><li>Intégrations personnalisées</li></ul><a class="btn btn-navy" href="https://parselex.app/login/">Nous parler</a></div></div>
+  <p class="pnote">Canaux de vente : ventes directes · projets pilotes · réseau de partenaires. Tarifs sur demande.</p>
+</div></section>
+<section id="market"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Marché</p><h2>Un marché en croissance exponentielle</h2><p class="lead">Le LegalTech mondial monte en puissance et Parselex occupe une niche unique à l'intersection de l'IA et de l'analytique documentaire juridique.</p></div>
+  <div class="mcards"><div class="card mcard reveal"><p class="mt">TAM — marché total</p><div class="mn" style="margin-top:6px">300 Md$ d'ici 2028</div><p style="margin-top:8px">Le LegalTech mondial a atteint 49 Md$ en 2024, avec une projection de 300 Md$ d'ici 2028 (TCAC 9,4 %) — analytique documentaire, conformité et automatisation comprises.</p></div><div class="card mcard reveal"><p class="mt">SAM — marché adressable</p><div class="mn" style="margin-top:6px">Le segment à la plus forte croissance</div><p style="margin-top:8px">L'analytique documentaire par IA. Parselex cible 7+ domaines juridiques et 4 régions clés — des centaines de milliers de cabinets, d'organismes d'enquête et de conseils dans le monde.</p></div><div class="card mcard reveal"><p class="mt">SOM — tête de pont</p><div class="mn" style="margin-top:6px">D'abord l'Inde et la CEI</div><p style="margin-top:8px">Un segment concret et mesurable où le produit est déjà validé — premiers revenus via les pilotes et les abonnements Professional / Enterprise, puis montée en charge régionale.</p></div></div>
+</div></section>
+<section id="roadmap" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Trajectoire</p><h2>Dynamique de développement</h2><p class="lead">Du démarrage du projet aux pipelines de production en une seule année — et une trajectoire claire de montée en échelle.</p></div>
+  <div class="timeline reveal" style="max-width:640px"><div class="tl"><span class="yr">2026</span><b>Lancement du projet</b><span>La plateforme est conçue autour de dossiers réels.</span></div><div class="tl"><span class="yr">2026</span><b>Première version</b><span>Produit opérationnel livré avec une suite de tests automatisés.</span></div><div class="tl"><span class="yr">2026</span><b>Hub IA unifié</b><span>40 outils pour agents sous une couche d'orchestration unique.</span></div><div class="tl"><span class="yr">2026</span><b>2 500+ documents en production</b><span>Pipelines clients réels traitant de vraies charges.</span></div><div class="tl"><span class="yr">2027</span><b>Montée en échelle SaaS multi-tenant</b><span>Nouveaux marchés, intégrations et application mobile.</span></div></div>
+</div></section>
+<section id="about"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Qui se cache derrière Parselex</p><h2>Conçu par un fondateur, pas par un comité</h2>
+    <p style="margin-top:14px"><span class="tag">Autofinancé · Porté par son fondateur · Indépendant</span></p></div>
+  <div class="grid2 reveal">
+    <div class="card"><p style="margin-top:0;font-size:15px">Parselex est construit et opéré par un fondateur qui travaille en direct sur des dossiers juridiques réels : le produit est façonné par des affaires pénales, civiles et financières concrètes, non par des études de marché. Chaque capacité répond à un problème rencontré en production.</p></div>
+    <div class="card"><p style="margin-top:0;font-size:15px">Le projet fonctionne comme une operation compacte et autofinancée dotée d'une culture d'ingénierie remarquablement solide : 2 309 vérifications automatiques par version, mesure hebdomadaire de la qualité de recherche et infrastructure multi-agents (40 outils sous un seul orchestrateur). La société est en cours de constitution ; ses informations juridiques seront publiées ici.</p></div>
+  </div>
+  <div style="margin-top:22px" class="reveal"><a class="btn btn-line" href="https://www.linkedin.com/company/parselex" target="_blank" rel="noopener">in&nbsp;·&nbsp;Échanger sur LinkedIn</a></div>
+</div></section>
+<section id="get-started"><div class="wrap">
+  <div class="ctaband reveal">
+    <h2 style="color:#fff">Commencez avec Parselex</h2>
+    <p style="color:rgba(255,255,255,.8);font-size:16.5px;max-width:620px;margin:14px auto 0">Faites passer votre premier dossier par la plateforme, ou commencez par la documentation d'architecture — les analyses approfondies vivent sur docs.parselex.app.</p>
+    <div class="ctas"><a class="btn btn-gold" href="https://parselex.app/login/">Ouvrir Parselex</a>
+    <a class="btn btn-ghost" href="https://docs.parselex.app" target="_blank" rel="noopener">Explorer la documentation</a></div>
+  </div>
+</div></section>
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <a class="flogo" href="#"><span class="mark">⚿</span>PARSELEX</a>
+      <p style="margin-top:14px;max-width:320px">Plateforme d'Intelligence Documentaire Juridique — de toute source jusqu'à un score objectif de préparation du dossier.</p>
+      <p style="margin-top:10px">Les recherches d'architecture, la sécurité et le benchmark RAG vivent sur <a href="https://docs.parselex.app" target="_blank" rel="noopener" style="color:var(--gold2);font-weight:600">docs.parselex.app</a></p>
+    </div>
+    <div><h4>Plateforme</h4><div class="fl"><a href="https://parselex.app/login/">Ouvrir l'application</a><a href="https://docs.parselex.app" target="_blank" rel="noopener">Documentation</a><a href="https://docs.parselex.app/security/">Architecture de sécurité</a><a href="https://docs.parselex.app/benchmark/">Benchmark RAG</a><a href="https://parselex.app/changelog/">Changelog</a><a href="https://www.linkedin.com/company/parselex" target="_blank" rel="noopener">LinkedIn</a></div></div>
+    <div><h4>Mentions légales</h4><div class="fl"><a href="https://docs.parselex.app/fr/legal/privacy/">Confidentialité</a><a href="https://docs.parselex.app/fr/legal/personal-data/">Utilisation des données personnelles</a><a href="https://docs.parselex.app/fr/legal/cookies/">Cookies</a><a href="https://docs.parselex.app/fr/legal/terms/">Conditions d'utilisation</a><a href="https://docs.parselex.app/fr/legal/payments/">Paiements récurrents</a><a href="https://docs.parselex.app/fr/legal/disclaimer/">Avertissement IA</a></div></div>
+  </div>
+  <div class="fbottom"><span>Support&nbsp;·&nbsp;contact@parselex.app</span><span>© 2026 Parselex — Plateforme d'Intelligence Documentaire Juridique</span></div>
+</div></footer>
+<script>
+var b=document.getElementById('burger'),n=document.getElementById('navlinks');
+if(b){b.addEventListener('click',function(){n.classList.toggle('open')});
+n.addEventListener('click',function(){n.classList.remove('open')})}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},
+{threshold:.08});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)})}
+else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
+</script></body>
+</html>
