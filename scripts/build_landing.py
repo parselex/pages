@@ -38,6 +38,27 @@ LINKEDIN = "https://www.linkedin.com/company/parselex"
 CHANGELOG = HOST + "/changelog/"
 OG_IMAGE = HOST + "/og.png"
 
+# Vector brand mark — scales of justice, matches logos/logo-120.png.
+# Colored via currentColor (inherits the CSS color of the .mark container).
+MARK_SVG = ("<svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' focusable='false'>"
+            "<circle cx='12' cy='4.3' r='1.15'/>"
+            "<path d='M12 4.3V17.7M4.6 6.5h14.8' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/>"
+            "<path d='M5 6.9 2.9 10.7M5 6.9l2.1 3.8M19 6.9l-2.1 3.8M19 6.9l2.1 3.8' fill='none' stroke='currentColor' stroke-width='.95' stroke-linecap='round'/>"
+            "<path d='M2.9 10.7a2.1 1.55 0 0 0 4.2 0Zm14 0a2.1 1.55 0 0 0 4.2 0Z'/>"
+            "<path d='M9.9 19h4.2M8.9 20.5h6.2' fill='none' stroke='currentColor' stroke-width='1.4' stroke-linecap='round'/>"
+            "</svg>")
+
+# Favicon: brand tile (navy, rounded) + gold scales — the same mark as the logo.
+FAVICON = ("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>"
+           "<rect width='24' height='24' rx='5.5' fill='%231B2A4A'/>"
+           "<g fill='%23D4A843'>"
+           "<circle cx='12' cy='4.3' r='1.15'/>"
+           "<path d='M12 4.3V17.7M4.6 6.5h14.8' fill='none' stroke='%23D4A843' stroke-width='1.5' stroke-linecap='round'/>"
+           "<path d='M5 6.9 2.9 10.7M5 6.9l2.1 3.8M19 6.9l-2.1 3.8M19 6.9l2.1 3.8' fill='none' stroke='%23D4A843' stroke-width='.95' stroke-linecap='round'/>"
+           "<path d='M2.9 10.7a2.1 1.55 0 0 0 4.2 0Zm14 0a2.1 1.55 0 0 0 4.2 0Z'/>"
+           "<path d='M9.9 19h4.2M8.9 20.5h6.2' fill='none' stroke='%23D4A843' stroke-width='1.4' stroke-linecap='round'/>"
+           "</g></svg>")
+
 # Site-level facts (same for every locale): founder/jurisdiction block and its labels.
 ABOUT = {
     "en": {
@@ -297,6 +318,7 @@ footer a{overflow-wrap:anywhere}
 footer a:hover{color:var(--gold2)}
 .flogo{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;letter-spacing:.16em}
 .flogo .mark{width:28px;height:28px;border-radius:7px;background:rgba(212,168,67,.15);color:var(--gold2);display:grid;place-items:center;font-size:15px}
+.logo .mark svg,.flogo .mark svg{width:15px;height:15px;display:block}
 .fbottom{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:rgba(255,255,255,.45);font-size:12.5px}
 /* reveal */
 .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
@@ -369,7 +391,8 @@ def head(c, path_prefix):
 <meta property="og:type" content="website">
 <meta property="og:locale" content="{og_locale}">
 <meta name="twitter:card" content="summary_large_image">{og_image}{alts}
-<link rel="canonical" href="{canonical}"><style>{CSS}</style>
+<link rel="canonical" href="{canonical}">
+<link rel="icon" type="image/svg+xml" href="{FAVICON}"><style>{CSS}</style>
 <script>document.documentElement.classList.add('js');</script>
 </head>"""
 
@@ -393,7 +416,7 @@ def nav(c, path_prefix):
     )
     return f"""
 <nav class="nav"><div class="wrap">
-  <a class="logo" href="#"><span class="mark">⚿</span>PARSELEX</a>
+  <a class="logo" href="#"><span class="mark">{MARK_SVG}</span>PARSELEX</a>
   <div class="navlinks" id="navlinks">{links}<a href="{DOCS}" target="_blank" rel="noopener">{n['docs']}</a></div>
   <div class="langs">{langs}</div>
   <a class="btn btn-navy" href="{LOGIN}">{n['cta']}</a>
@@ -639,7 +662,7 @@ def render(c, path_prefix):
 <footer><div class="wrap">
   <div class="fgrid">
     <div>
-      <a class="flogo" href="#"><span class="mark">⚿</span>PARSELEX</a>
+      <a class="flogo" href="#"><span class="mark">{MARK_SVG}</span>PARSELEX</a>
       <p style="margin-top:14px;max-width:320px">{f['tagline']}</p>
       <p style="margin-top:10px">{f['docs_note']} <a href="{DOCS}" target="_blank" rel="noopener" style="color:var(--gold2);font-weight:600">docs.parselex.app</a></p>
     </div>
@@ -699,7 +722,7 @@ def render_login():
 <title>Sign in &#8212; Parselex</title>
 <meta name="description" content="Sign in to Parselex: Studio (main application), Admin Workspace and MCP Hub are in final development &#8212; join the waiting list and get launch updates.">
 <link rel="canonical" href="https://parselex.app/login/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#9878;</text></svg>">
+<link rel="icon" type="image/svg+xml" href="{FAVICON}">
 <style>
 :root{{--navy:#1B2A4A;--navy2:#2C4270;--gold:#C9953C;--gold2:#D4A843;
 --goldsoft:rgba(201,149,60,.14);--ink:#1F2937;--muted:#5B6B7F;--line:#E4E8EF;
@@ -709,7 +732,7 @@ body{{font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;background
 .lnav{{background:var(--navy);padding:18px 24px}}
 .lnav .wrap{{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}}
 .logo{{color:#fff;text-decoration:none;font-weight:800;letter-spacing:.14em;font-size:15px}}
-.logo .mark{{color:var(--gold2)}}
+.logo .mark{{width:28px;height:28px;border-radius:7px;background:rgba(212,168,67,.15);color:var(--gold2);display:grid;place-items:center}}.logo .mark svg{{width:15px;height:15px;display:block}}
 .lback{{color:rgba(255,255,255,.75);text-decoration:none;font-size:13px}}
 .lback:hover{{color:#fff}}
 main{{flex:1;max-width:960px;width:100%;margin:0 auto;padding:64px 24px}}
@@ -751,7 +774,7 @@ html{{scroll-behavior:smooth}}
 </head>
 <body>
 <nav class="lnav"><div class="wrap">
-  <a class="logo" href="/"><span class="mark">&#9878;</span> PARSELEX</a>
+  <a class="logo" href="/"><span class="mark">{MARK_SVG}</span> PARSELEX</a>
   <a class="lback" href="/">&#8592; Back to parselex.app</a>
 </div></nav>
 <main>
@@ -824,7 +847,7 @@ def render_changelog():
 <link rel="canonical" href="https://parselex.app/changelog/">
 <meta property="og:title" content="Changelog &#8212; Parselex">
 <meta property="og:image" content="{OG_IMAGE}">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#9878;</text></svg>">
+<link rel="icon" type="image/svg+xml" href="{FAVICON}">
 <style>
 :root{{--navy:#1B2A4A;--navy2:#2C4270;--gold:#C9953C;--gold2:#D4A843;--goldsoft:rgba(201,149,60,.14);
 --ink:#1F2937;--muted:#5B6B7F;--line:#E4E8EF;--bg:#FFFFFF;--soft:#F6F8FB}}
@@ -834,7 +857,7 @@ min-height:100vh;display:flex;flex-direction:column}}
 .cnav{{background:var(--navy);padding:18px 24px}}
 .cnav .wrap{{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}}
 .logo{{color:#fff;text-decoration:none;font-weight:800;letter-spacing:.14em;font-size:15px}}
-.logo .mark{{color:var(--gold2)}}
+.logo .mark{{width:28px;height:28px;border-radius:7px;background:rgba(212,168,67,.15);color:var(--gold2);display:grid;place-items:center}}.logo .mark svg{{width:15px;height:15px;display:block}}
 .cback{{color:rgba(255,255,255,.75);text-decoration:none;font-size:13px}}
 .cback:hover{{color:#fff}}
 main{{flex:1;max-width:860px;width:100%;margin:0 auto;padding:56px 24px}}
@@ -853,7 +876,7 @@ font-size:12.5px;color:var(--muted)}}
 </head>
 <body>
 <nav class="cnav"><div class="wrap">
-  <a class="logo" href="/"><span class="mark">&#9878;</span> PARSELEX</a>
+  <a class="logo" href="/"><span class="mark">{MARK_SVG}</span> PARSELEX</a>
   <a class="cback" href="/">&#8592; parselex.app</a>
 </div></nav>
 <main>
