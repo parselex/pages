@@ -9,6 +9,7 @@ Content sources:
 Constraints: no founder names, no screenshots, self-contained single-file pages.
 """
 import os
+import shutil
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -937,6 +938,17 @@ def main():
         print(f"kept {og_dst}  (output dir is repo root, no self-copy)")
     if not (os.path.isfile(og_dst) and os.path.getsize(og_dst) > 0):
         raise SystemExit("og.png missing or empty — regenerate it with scripts/gen_og.py")
+    # brand logos: committed at repo root (logos/), copied into the artifact
+    # (used by Google OAuth branding: https://parselex.app/logos/logo-120.png)
+    logos_src = os.path.join(repo_root, "logos")
+    logos_dst = os.path.join(out, "logos")
+    if os.path.isdir(logos_src):
+        if os.path.abspath(logos_src) != os.path.abspath(logos_dst):
+            shutil.copytree(logos_src, logos_dst, dirs_exist_ok=True)
+            n = len([f for f in os.listdir(logos_dst) if not f.startswith(".")])
+            print(f"written {logos_dst}  ({n} files, copied from repo root)")
+        else:
+            print(f"kept {logos_dst}  (output dir is repo root, no self-copy)")
 
 
 if __name__ == "__main__":
