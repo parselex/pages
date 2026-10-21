@@ -645,7 +645,7 @@ def render(c, path_prefix):
     <div><h4>{f['col_platform_title']}</h4><div class="fl">{flinks}</div></div>
     <div><h4>{f['col_legal_title']}</h4><div class="fl">{legal_links()}</div></div>
   </div>
-  <div class="fbottom"><span>{f['contact']}&nbsp;·&nbsp;parselex_support@googlegroups.com</span><span>{f['copyright']}</span></div>
+  <div class="fbottom"><span>{f['contact']}&nbsp;·&nbsp;parselex@googlegroups.com</span><span>{f['copyright']}</span></div>
 </div></footer>"""
 
     js = """
@@ -665,38 +665,6 @@ else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add(
         + arch + modules + metrics + compare + pricing + market + roadmap + about + cta
         + footer + js + "</body>\n</html>"
     )
-
-
-_WL_SCRIPT = """<script>
-(function(){
-  var f=document.getElementById('wlform'),m=document.getElementById('wlmsg'),b=document.getElementById('wlbtn');
-  if(!f||!m||!b){return}
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    b.disabled=true;b.textContent='Subscribing\u2026';
-    fetch('https://formsubmit.co/ajax/parselex_support@googlegroups.com',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        email:(f.elements.email.value||'').trim(),
-        _subject:'Parselex waiting list \u2014 new subscriber',
-        _template:'table',
-        _captcha:'false',
-        _honey:f.elements._honey.value
-      })
-    }).then(function(r){return r.json()}).then(function(j){
-      if(j&&(j.success===true||j.success==='true')){
-        m.textContent="You're on the list \u2014 thank you! We'll email you the moment access opens.";
-        m.className='wlmsg ok';b.textContent='Subscribed';
-      }else{throw new Error('rejected')}
-    }).catch(function(){
-      m.textContent='Something went wrong \u2014 please try again in a minute.';
-      m.className='wlmsg err';b.disabled=false;b.textContent='Join the waiting list';
-    });
-    m.hidden=false;
-  });
-})();
-</script>"""
 
 
 def render_login():
@@ -766,15 +734,11 @@ html{{scroll-behavior:smooth}}
 .wl h2{{font-size:21px;color:var(--navy);letter-spacing:-.01em}}
 .wl p{{color:var(--muted);font-size:14px;line-height:1.6;margin-top:8px;max-width:62ch}}
 .wlrow{{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}}
-.wlrow input[type=email]{{flex:1;min-width:220px;height:46px;border:1px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-size:14.5px;color:var(--ink);background:var(--bg);outline:none;transition:border-color .15s,box-shadow .15s}}
-.wlrow input[type=email]:focus{{border-color:var(--gold);box-shadow:0 0 0 3px var(--goldsoft)}}
-.wlrow button{{height:46px;padding:0 22px;border:0;border-radius:10px;background:var(--navy);color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s}}
-.wlrow button:hover{{background:var(--navy2)}}
-.wlrow button:disabled{{opacity:.65;cursor:default}}
-.hp{{position:absolute;left:-9999px;opacity:0;width:0;height:0}}
-.wlmsg{{margin-top:12px;font-size:13.5px;font-weight:600}}
-.wlmsg.ok{{color:#1A7F37}}
-.wlmsg.err{{color:#B42318}}
+.wlcta{{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;border:1px solid var(--navy);border-radius:10px;background:var(--navy);color:#fff;font:inherit;font-size:14px;font-weight:700;text-decoration:none;transition:background .15s,border-color .15s,color .15s}}
+.wlcta svg{{width:16px;height:16px;flex:none;fill:currentColor}}
+.wlcta:hover{{background:var(--navy2);border-color:var(--navy2)}}
+.wlcta-ghost{{background:var(--bg);color:var(--navy)}}
+.wlcta-ghost:hover{{border-color:var(--gold);color:var(--gold);background:var(--bg)}}
 .wlsmall{{font-size:12px;color:var(--muted);margin-top:12px}}
 .wlsmall a{{color:var(--navy2);text-decoration:underline}}
 .wlsocial{{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}}
@@ -797,17 +761,13 @@ html{{scroll-behavior:smooth}}
   <div class="grid">{items}</div>
   <section class="wl" id="waitlist">
     <h2>Be the first to know</h2>
-    <p>Studio, Admin Workspace and MCP Hub are in final development. Leave your email
+    <p>Studio, Admin Workspace and MCP Hub are in final development. Subscribe now
     and we&#8217;ll notify you the moment access opens &#8212; launch news only, no spam.</p>
-    <form class="wlrow" id="wlform">
-      <input type="email" name="email" required placeholder="you@company.com" aria-label="Email address">
-      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit" id="wlbtn">Join the waiting list</button>
-    </form>
-    <p class="wlmsg" id="wlmsg" hidden></p>
-    <div class="wlsocial"><span class="wlsep">or follow the news:</span><a class="wlsbtn" href="https://t.me/parselex" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram channel</a><a class="wlsbtn" href="https://whatsapp.com/channel/0029VbE5KT165yD2C4j5yW0V" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp channel</a><a class="wlsbtn" href="https://groups.google.com/g/parselex_support" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Mailing list</a></div>
-    <p class="wlsmall">By joining you agree to receive launch updates from Parselex.
-    Prefer email? Write to <a href="mailto:parselex_support@googlegroups.com">parselex_support@googlegroups.com</a>
+    <div class="wlrow"><a class="wlcta" href="mailto:parselex+subscribe@googlegroups.com?subject=Subscribe&amp;body=Please%20add%20me%20to%20the%20Parselex%20news%20mailing%20list."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>Subscribe by email</a><a class="wlcta wlcta-ghost" href="https://groups.google.com/g/parselex" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>Join on Google Groups</a></div>
+    <div class="wlsocial"><span class="wlsep">or follow the news:</span><a class="wlsbtn" href="https://t.me/parselex" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram channel</a><a class="wlsbtn" href="https://whatsapp.com/channel/0029VbE5KT165yD2C4j5yW0V" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>WhatsApp channel</a></div>
+    <p class="wlsmall">By subscribing you agree to receive launch updates from Parselex.
+    Google will send a one-click confirmation &#8212; after that you&#8217;re on the list.
+    Prefer a human? Write to <a href="mailto:parselex@googlegroups.com">parselex@googlegroups.com</a>
     and we&#8217;ll add you manually.</p>
   </section>
 </main>
@@ -815,7 +775,6 @@ html{{scroll-behavior:smooth}}
   <span>&#9878; Parselex &#8212; Legal Document Intelligence Platform</span>
   <span><a href="https://docs.parselex.app" rel="noopener">Documentation</a></span>
 </footer>
-{_WL_SCRIPT}
 </body>
 </html>"""
 
@@ -825,7 +784,7 @@ def render_changelog():
     entries = [
         ("2026-10", "Mailing list and news channels",
          "Platform news now reach you three ways &#8212; the Telegram channel, the WhatsApp "
-         "channel and the official mailing list parselex_support@googlegroups.com. All three are "
+         "channel and the official mailing list parselex@googlegroups.com. All three are "
          "linked from the sign-in hub."),
         ("2026-10", "Waiting list opens",
          "Studio (the main application), Admin Workspace and MCP Hub are in final development. "
