@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parselex — платформа інтелектуального аналізу юридичних документів</title>
+<meta name="description" content="Parselex автоматизує повний цикл роботи з юридичними документами: інтелектуальний OCR, багатомовний аналіз, складання проєктів та оцінка готовності справи (0–100). Працюючий продукт, 7 категорій аналітики, 4 регіони. Безпека Zero-Trust на рівні архітектури.">
+<meta property="og:title" content="Parselex — платформа інтелектуального аналізу юридичних документів">
+<meta property="og:description" content="Parselex автоматизує повний цикл роботи з юридичними документами: інтелектуальний OCR, багатомовний аналіз, складання проєктів та оцінка готовності справи (0–100). Працюючий продукт, 7 категорій аналітики, 4 регіони. Безпека Zero-Trust на рівні архітектури.">
+<meta property="og:url" content="https://parselex.app/uk/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://parselex.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://parselex.app/og.png">
+  <link rel="alternate" hreflang="en" href="https://parselex.app/">
+  <link rel="alternate" hreflang="es" href="https://parselex.app/es/">
+  <link rel="alternate" hreflang="fr" href="https://parselex.app/fr/">
+  <link rel="alternate" hreflang="hi" href="https://parselex.app/hi/">
+  <link rel="alternate" hreflang="ru" href="https://parselex.app/ru/">
+  <link rel="alternate" hreflang="uk" href="https://parselex.app/uk/">
+  <link rel="alternate" hreflang="x-default" href="https://parselex.app/">
+<link rel="canonical" href="https://parselex.app/uk/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5.5' fill='%231B2A4A'/><g fill='%23D4A843'><circle cx='12' cy='4.3' r='1.15'/><path d='M12 4.3V17.7M4.6 6.5h14.8' fill='none' stroke='%23D4A843' stroke-width='1.5' stroke-linecap='round'/><path d='M5 6.9 2.9 10.7M5 6.9l2.1 3.8M19 6.9l-2.1 3.8M19 6.9l2.1 3.8' fill='none' stroke='%23D4A843' stroke-width='.95' stroke-linecap='round'/><path d='M2.9 10.7a2.1 1.55 0 0 0 4.2 0Zm14 0a2.1 1.55 0 0 0 4.2 0Z'/><path d='M9.9 19h4.2M8.9 20.5h6.2' fill='none' stroke='%23D4A843' stroke-width='1.4' stroke-linecap='round'/></g></svg>"><style>
+:root{--navy:#1B2A4A;--navy2:#2C4270;--navyD:#0F1A33;--gold:#C9953C;--gold2:#D4A843;
+--goldsoft:rgba(201,149,60,.14);--ink:#1F2937;--muted:#5B6B7F;--line:#E4E8EF;
+--bg:#FFFFFF;--soft:#F6F8FB;--green:#1A7F4C;--red:#C62828}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.6;font-size:15.5px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+section.alt{background:var(--soft)}
+.kicker{color:var(--gold);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:clamp(29px,4.6vw,54px);line-height:1.14;letter-spacing:-.02em;font-weight:800;overflow-wrap:break-word}
+h2{font-size:clamp(25px,3.2vw,34px);line-height:1.2;letter-spacing:-.015em;font-weight:800;color:var(--navy)}
+h3{font-size:16.5px;font-weight:700;color:var(--navy)}
+.lead{color:var(--muted);font-size:17px;max-width:760px;margin-top:14px}
+.accent{color:var(--gold2)}
+.head{margin-bottom:38px}
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:14.5px;color:var(--navy)}
+.logo .mark{width:28px;height:28px;border-radius:7px;background:var(--navy);color:var(--gold2);
+display:grid;place-items:center;font-size:15px;letter-spacing:0}
+.navlinks{display:flex;gap:20px;margin-left:auto}
+.navlinks a{font-size:13.5px;font-weight:600;color:var(--muted)}
+.navlinks a:hover{color:var(--navy)}
+.langs{display:flex;gap:2px;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:3px}
+.langs a{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;color:var(--muted);letter-spacing:.04em}
+.langs a.on{background:var(--navy);color:#fff}
+.langs a:hover:not(.on){color:var(--navy)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:9px;cursor:pointer;
+transition:.18s;border:1px solid transparent}
+.btn-navy{background:var(--navy);color:#fff;padding:9px 16px;font-size:13.5px}
+.btn-navy:hover{background:var(--navy2)}
+.btn-gold{background:var(--gold);color:#fff;padding:13px 24px;font-size:15px}
+.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:#fff;padding:13px 24px;font-size:15px}
+.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2)}
+.btn-line{border-color:var(--line);color:var(--navy);padding:13px 24px;font-size:15px;background:#fff}
+.btn-line:hover{border-color:var(--navy)}
+.burger{display:none;margin-left:auto;background:none;border:0;font-size:22px;color:var(--navy);cursor:pointer}
+/* ---------- hero ---------- */
+.hero{background:radial-gradient(900px 420px at 78% -10%,rgba(201,149,60,.22),transparent 60%),
+radial-gradient(700px 380px at 8% 108%,rgba(44,66,112,.55),transparent 60%),linear-gradient(160deg,var(--navyD),var(--navy));
+color:#fff;padding:88px 0 66px}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,168,67,.5);color:var(--gold2);
+font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 14px;border-radius:99px;background:rgba(201,149,60,.1)}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(26,127,76,.25)}
+.hero .sub{color:rgba(255,255,255,.82);font-size:18px;max-width:730px;margin-top:20px}
+.hero .ctas{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.hero .note{margin-top:22px;color:rgba(255,255,255,.55);font-size:13px;letter-spacing:.02em}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px;
+border-top:1px solid rgba(255,255,255,.14);padding-top:28px}
+.hstat .n{font-size:clamp(24px,3vw,34px);font-weight:800;color:var(--gold2);letter-spacing:-.01em}
+.hstat .l{color:rgba(255,255,255,.66);font-size:12.5px;margin-top:3px}
+/* ---------- cards & grids ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 1px 2px rgba(15,26,51,.04)}
+.card p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.num{font-size:13px;font-weight:800;color:var(--gold);letter-spacing:.1em}
+.ic{width:42px;height:42px;border-radius:10px;background:var(--goldsoft);color:var(--navy);
+display:grid;place-items:center;font-size:19px;margin-bottom:14px}
+.tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+color:var(--navy);background:var(--goldsoft);border:1px solid rgba(201,149,60,.35);border-radius:6px;padding:3px 8px}
+/* two-col platform lists */
+.twocol .card ul{list-style:none;margin-top:12px}
+.twocol li{padding:9px 0 9px 26px;position:relative;color:var(--ink);font-size:14.5px;border-top:1px dashed var(--line)}
+.twocol li:first-child{border-top:0}
+.twocol li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800}
+/* score */
+.scoregrid{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:start}
+.bignum{font-size:clamp(52px,6vw,76px);font-weight:800;letter-spacing:-.03em;
+background:linear-gradient(100deg,var(--navy),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.scorebar{height:10px;border-radius:99px;background:linear-gradient(90deg,#E8EBF1 0%,var(--gold) 60%,var(--green) 100%);margin:16px 0 6px;position:relative;overflow:hidden}
+.scorebar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 46px,rgba(255,255,255,.55) 46px 48px)}
+.dim{display:flex;gap:12px;padding:10px 0;border-top:1px dashed var(--line)}
+.dim:first-of-type{border-top:0}
+.dim .ck{color:var(--green);font-weight:800}
+.dim b{color:var(--navy)}
+.dim span.d{color:var(--muted);font-size:14px}
+.steps{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.step{display:flex;gap:11px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 13px;align-items:flex-start}
+.step .i{min-width:24px;height:24px;border-radius:7px;background:var(--navy);color:var(--gold2);font-size:12px;font-weight:800;display:grid;place-items:center}
+.step p{font-size:13.5px;color:var(--ink)}
+.ribbon{margin-top:26px;background:linear-gradient(120deg,var(--navyD),var(--navy2));color:#fff;border-radius:14px;
+padding:20px 24px;display:flex;gap:14px;align-items:center;font-weight:600}
+.ribbon .r{font-size:22px;color:var(--gold2)}
+/* pipeline chips */
+.chips{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:16px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:9px;padding:8px 14px;font-size:13.5px;font-weight:700;color:var(--navy)}
+.ar{color:var(--gold);font-weight:800}
+.cascade{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.casc .card{padding:18px}
+.casc .cn{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:.1em}
+.softstrip{margin-top:20px;border:1px dashed rgba(201,149,60,.55);background:var(--goldsoft);
+border-radius:12px;padding:15px 20px;font-size:14.5px;color:var(--ink)}
+/* modules */
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.mod .mg{font-size:19px;color:var(--navy);background:var(--goldsoft);width:36px;height:36px;border-radius:9px;display:grid;place-items:center}
+.mod b{display:block;color:var(--navy);margin-top:10px;font-size:14px}
+.mod p{color:var(--muted);font-size:12.5px;margin-top:3px;line-height:1.5}
+/* metrics */
+.mstats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mstat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;text-align:left}
+.mstat .n{font-size:clamp(30px,3.4vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.mstat .l{color:var(--muted);font-size:13.5px;margin-top:4px}
+.casecard{margin-top:22px;background:linear-gradient(120deg,var(--navyD),var(--navy));border-radius:16px;color:#fff;padding:28px;display:grid;grid-template-columns:1.05fr 1fr;gap:26px}
+.casecard h3{color:#fff;font-size:18px}
+.casecard .ct{color:var(--gold2);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.casecard .rows{display:grid;gap:8px}
+.crow{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed rgba(255,255,255,.18);padding-bottom:8px;font-size:14px}
+.crow b{color:var(--gold2);font-weight:700;white-space:nowrap;text-align:right}
+.crow span{color:rgba(255,255,255,.85)}
+.qlist{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;margin-top:14px}
+.qlist div{padding-left:24px;position:relative;color:var(--muted);font-size:14px}
+.qlist div::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+/* compare */
+.cmp .card{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cmp .grp b{color:var(--navy);font-size:16px}
+.cmp .who{color:var(--muted);font-size:13.5px;margin-top:5px}
+.cmp .lim{color:var(--red);font-size:13.5px;margin-top:8px;display:flex;gap:8px}
+.cmp .win{color:var(--ink);font-size:14.5px;display:flex;gap:10px}
+.cmp .win::before{content:"✓";color:var(--green);font-weight:800}
+.cmp .win b{color:var(--navy)}
+.cmp .card + .card{margin-top:14px}
+/* pricing */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.tier{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;position:relative}
+.tier.hot{background:linear-gradient(160deg,var(--navyD),var(--navy2));color:#fff;border-color:var(--navy)}
+.tier .tn{font-size:18px;font-weight:800;color:var(--navy)}
+.tier.hot .tn{color:#fff}
+.tier .tf{color:var(--muted);font-size:13.5px;margin-top:3px}
+.tier.hot .tf{color:rgba(255,255,255,.72)}
+.tier ul{list-style:none;margin:16px 0 22px;flex:1}
+.tier li{padding:7px 0 7px 24px;position:relative;font-size:14px;border-top:1px dashed var(--line)}
+.tier.hot li{border-top-color:rgba(255,255,255,.15)}
+.tier li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800}
+.tier .btn{justify-content:center}
+.pop{position:absolute;top:-11px;right:18px;background:var(--gold);color:#fff;font-size:10.5px;font-weight:800;
+letter-spacing:.09em;text-transform:uppercase;border-radius:99px;padding:5px 12px}
+.tier .btn-navy{width:100%;justify-content:center}
+.tier.hot .btn-gold{width:100%}
+.pnote{text-align:center;color:var(--muted);font-size:13.5px;margin-top:20px}
+/* market */
+.mcards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mcard .mn{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.mcard .mt{color:var(--gold);font-weight:800;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+/* roadmap */
+.timeline{position:relative;margin-top:8px;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--gold),var(--line))}
+.tl{position:relative;padding:0 0 26px 18px}
+.tl:last-child{padding-bottom:0}
+.tl::before{content:"";position:absolute;left:-26px;top:5px;width:16px;height:16px;border-radius:50%;
+background:#fff;border:3px solid var(--gold)}
+.tl .yr{display:inline-block;background:var(--navy);color:var(--gold2);font-size:11.5px;font-weight:800;letter-spacing:.08em;
+border-radius:6px;padding:3px 10px;margin-bottom:6px}
+.tl b{color:var(--navy);display:block}
+.tl span{color:var(--muted);font-size:14px}
+/* cta */
+.ctaband{background:radial-gradient(700px 300px at 85% 0%,rgba(201,149,60,.28),transparent 60%),linear-gradient(140deg,var(--navyD),var(--navy));
+border-radius:20px;color:#fff;padding:56px 40px;text-align:center}
+.ctaband .ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+/* footer */
+footer{background:var(--navyD);color:rgba(255,255,255,.72);padding:52px 0 30px;font-size:13.5px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+footer h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+footer .fl{display:grid;gap:9px}
+footer a{overflow-wrap:anywhere}
+footer a:hover{color:var(--gold2)}
+.flogo{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;letter-spacing:.16em}
+.flogo .mark{width:28px;height:28px;border-radius:7px;background:rgba(212,168,67,.15);color:var(--gold2);display:grid;place-items:center;font-size:15px}
+.logo .mark svg,.flogo .mark svg{width:15px;height:15px;display:block}
+.fbottom{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:rgba(255,255,255,.45);font-size:12.5px}
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
+/* responsive */
+@media(max-width:1020px){
+ .grid3,.mcards,.mstats{grid-template-columns:1fr 1fr}
+ .mods{grid-template-columns:1fr 1fr 1fr}
+ .cascade{grid-template-columns:1fr 1fr}
+ .scoregrid,.casecard{grid-template-columns:1fr}
+ .cmp .card{grid-template-columns:1fr}
+ .grid4{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:1080px){
+ .navlinks{display:none;position:absolute;top:60px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);
+ flex-direction:column;padding:16px 24px;gap:14px}
+ .navlinks.open{display:flex}
+ .langs{margin-left:auto}
+ .burger{display:block;margin-left:0}
+}
+@media(max-width:720px){
+ .nav .wrap{gap:10px}
+ .logo{font-size:12.5px;letter-spacing:.09em;gap:7px}
+ .langs{margin-left:auto;padding:2px}
+ .langs a{padding:3px 6px;font-size:10.5px}
+ .nav .btn-navy{display:none}
+ .fgrid{grid-template-columns:1fr;gap:26px}
+ .crow{flex-direction:column;gap:2px}
+ .crow b{white-space:normal;text-align:left}
+ .grid3,.grid2,.mstats,.mcards,.tiers,.steps,.qlist,.cascade{grid-template-columns:1fr}
+ .mods{grid-template-columns:1fr 1fr}
+ .grid4{grid-template-columns:1fr!important}
+ .twocol .card+.card{margin-top:14px}
+ .hstats{grid-template-columns:1fr 1fr;gap:20px}
+ .ctaband{padding:40px 22px}
+ .casecard{padding:22px}
+ section{padding:56px 0}
+}
+@media(max-width:400px){
+ .h1,h1{font-size:27px}
+}
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head><body>
+<nav class="nav"><div class="wrap">
+  <a class="logo" href="#"><span class="mark"><svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' focusable='false'><circle cx='12' cy='4.3' r='1.15'/><path d='M12 4.3V17.7M4.6 6.5h14.8' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><path d='M5 6.9 2.9 10.7M5 6.9l2.1 3.8M19 6.9l-2.1 3.8M19 6.9l2.1 3.8' fill='none' stroke='currentColor' stroke-width='.95' stroke-linecap='round'/><path d='M2.9 10.7a2.1 1.55 0 0 0 4.2 0Zm14 0a2.1 1.55 0 0 0 4.2 0Z'/><path d='M9.9 19h4.2M8.9 20.5h6.2' fill='none' stroke='currentColor' stroke-width='1.4' stroke-linecap='round'/></svg></span>PARSELEX</a>
+  <div class="navlinks" id="navlinks"><a href="#platform">Платформа</a><a href="#score">Оцінка справи</a><a href="#security">Безпека</a><a href="#product">Продукт</a><a href="#metrics">Метрики</a><a href="#pricing">Тарифи</a><a href="https://docs.parselex.app" target="_blank" rel="noopener">Документація</a></div>
+  <div class="langs"><a href="../" class="">EN</a><a href="../es/" class="">ES</a><a href="../fr/" class="">FR</a><a href="../hi/" class="">HI</a><a href="../ru/" class="">RU</a><a href="./" class="on">UK</a></div>
+  <a class="btn btn-navy" href="https://parselex.app/login/">Відкрити Parselex</a>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</div></nav>
+<header class="hero"><div class="wrap">
+  <span class="badge"><span class="dot"></span>Працюючий продукт — реальні справи у провадженні</span>
+  <h1 style="margin-top:22px">Платформа <span class='accent'>інтелектуального аналізу</span> юридичних документів</h1>
+  <p class="sub">Parselex автоматизує повний цикл ведення юридичних документів — від завантаження з будь-яких джерел до глибокої аналітики, складання проєктів та об'єктивної оцінки готовності справи. Єдина система, яка «думає» разом із юристом, а не просто шукає текст.</p>
+  <div class="ctas"><a class="btn btn-gold" href="https://parselex.app/login/">Відкрити Parselex</a>
+  <a class="btn btn-ghost" href="https://docs.parselex.app" target="_blank" rel="noopener">Читати документацію</a></div>
+  <p class="note">parselex.app · архітектура, незалежна від моделей · 2026</p>
+  <div class="hstats"><div class="hstat"><div class="n">99,6%</div><div class="l">успішних оброблень</div></div><div class="hstat"><div class="n">7</div><div class="l">категорій аналітики</div></div><div class="hstat"><div class="n">4</div><div class="l">юрисдикції в одній живій справі</div></div><div class="hstat"><div class="n">2 500+</div><div class="l">документів у бойових пайплайнах</div></div></div>
+</div></header>
+<section id="problem"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Проблема</p><h2>Юридичні команди тонуть у документах</h2><p class="lead">Ручна обробка створює критичні вузькі місця, примножує ризик людських помилок і сповільнює кожне важливе рішення.</p></div>
+  <div class="grid3"><div class="card"><div class="num">01</div><h3 style="margin-top:8px">Вибухове зростання обсягів даних</h3><p>Одна кримінальна справа може містити від 200 до 2 000 документів. Щороку у світі генеруються мільйони юридичних файлів, що потребують аналізу та класифікації.</p></div><div class="card"><div class="num">02</div><h3 style="margin-top:8px">Ручна рутина</h3><p>Юристи витрачають до 40% робочого часу на документообіг. Повний аналіз однієї складної справи триває тижні, а часто й місяці.</p></div><div class="card"><div class="num">03</div><h3 style="margin-top:8px">Помилки та ризики</h3><p>Людський фактор призводить до пропусків доказів, суперечностей у показаннях та невідповідностей у фінансових документах — саме ці прогалини вирішують долю справи.</p></div></div>
+  <h3 style="margin:44px 0 18px;font-size:20px" class="reveal">Чому загальні ШІ-інструменти не вирішують проблему</h3>
+  <div class="grid3 reveal"><div class="card"><div class="ic">⊗</div><h3>Поверхневі відповіді та «галюцинації»</h3><p>Загальні чат-боти видають правдоподібні, але хибні результати: точність 42–65%, рівень галюцинацій до 33%. Перевірка їхніх відповідей триває довше, ніж створення документа з нуля.</p></div><div class="card"><div class="ic">❄</div><h3>Немає системного підходу</h3><p>Точкові інструменти обробляють ізольовані запити — вони не бачать картину справи загалом і не пов'язують джерела: пошту, месенджери, скани.</p></div><div class="card"><div class="ic">⚿</div><h3>Ризики конфіденційності</h3><p>Завантаження чутливих даних справи у відкриті ШІ-моделі загрожує витоками; більшість інструментів узагалі не гарантують ізоляцію даних.</p></div></div>
+</div></section>
+<section id="platform" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Платформа</p><h2>ШІ-платформа повного циклу</h2><p class="lead">Parselex веде справу впродовж усього життєвого циклу: від завантаження документів з будь-яких джерел до глибокої аналітики, складання проєктів та об'єктивної оцінки готовності. Єдина система, яка «думає» разом із юристом, — з архітектурою, незалежною від постачальників: каскад моделей адаптується, процес не змінюється.</p></div>
+  <div class="grid2 twocol reveal">
+    <div class="card"><h3>Інженерія документів</h3><ul><li>Інтелектуальний OCR — скановані документи, чати WhatsApp і Telegram</li><li>Автоматична класифікація з оцінкою релевантності</li><li>Багатомовний юридичний переклад із триетапним контролем якості</li><li>Автоперевірка цілісності — хронологія, перехресні посилання, арифметика, семантика</li><li>Генерація проєктів судових документів, готових до подання</li></ul></div>
+    <div class="card"><h3>ШІ-аналітика та експертиза</h3><ul><li>ШІ-пошук по всьому корпусу справи — відповіді з посиланнями на конкретні документи</li><li>Багатоетапний аналіз — когерентність, суперечності, наратив, докази</li><li>Оцінка готовності справи (0–100) — прив'язка обвинувачень і gap-аналіз</li><li>Замкнений цикл: Класифікація → Аналіз → Оцінка → Звіт</li><li>Криміналістична фіксація доказів — незмінність кожного файлу</li></ul></div>
+  </div>
+</div></section>
+<section id="sectors"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Практики</p><h2>Побудовано на живій практиці, а не на гіпотезах</h2><p class="lead">Кожна категорія виросла з живої практики платформи — з категорій справ, де кожен документ — потенційний доказ.</p></div>
+  <div class="grid4 reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px"><div class="card"><div class="ic">⛨</div><span class="tag">FINREG</span><h3 style="margin-top:10px">Шахрайство у банківській сфері</h3><p>Несанкціонований доступ та розкрадання з рахунків: виписки, платіжні логи, заяви та листування. Автоперевірка арифметики й хронології, пошук суперечностей у показаннях.</p></div><div class="card"><div class="ic">$</div><span class="tag">Реальна справа FIR</span><h3 style="margin-top:10px">Криптошахрайство</h3><p>Справи про криптошахрайство та блокчейн-розслідування. Відпрацьований кросс-борд кейс: організована схема, 9 обвинувачених у 4 юрисдикціях — 91 документ оброблено платформою.</p></div><div class="card"><div class="ic">⚖</div><span class="tag">AML · KYC</span><h3 style="margin-top:10px">Протидія відмиванню коштів</h3><p>Аналіз схем легалізації: ланцюжки транзакцій, джерела коштів, комплаєнс-документація. Окремий домен платформи поряд із кримінальною та цивільною практикою.</p></div><div class="card"><div class="ic">▦</div><span class="tag">Civil</span><h3 style="margin-top:10px">Трудові спори</h3><p>Кадрові пакети, договори, накази та службове листування. Виявлення міжокументних суперечностей і підготовка позиції до суду.</p></div></div>
+  <p class="softstrip reveal"><b>7 категорій аналітики</b> — Criminal · Civil · COMM (міжнародне комерційне право) · ECOM (електронна комерція та захист споживачів) · FINREG (фінансове регулювання та AML) · IP · Litigation Support — у <b>4 регіонах</b>: Америка/США, Європа, Азія, Індія. Розширюється під практики клієнта.</p>
+</div></section>
+<section id="score" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Флагманська можливість</p><h2>Оцінка готовності справи — від 0 до 100</h2><p class="lead">Не генерація тексту, а експертиза справи. Числова оцінка готовності з автоматичною прив'язкою доказів та gap-аналізом — аналогів на ринку немає.</p></div>
+  <div class="scoregrid">
+    <div class="card reveal">
+      <div class="bignum">0–100</div>
+      <p style="color:var(--muted)">числова оцінка готовності справи</p>
+      <div class="scorebar"></div>
+      <div class="dim"><span class="ck">✓</span><div><b>Доказова база</b> — <span class="d">повнота та надійність кожного доказу</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Прив'язка обвинувачень</b> — <span class="d">докази закріплені за конкретними статтями та пунктами</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Gap-аналіз</b> — <span class="d">відсутні докази та слабкі місця виявляються автоматично</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Теорія справи</b> — <span class="d">внутрішня узгодженість та переконливість наративу</span></div></div><div class="dim"><span class="ck">✓</span><div><b>Лінії ризику</b> — <span class="d">ймовірні напрями атаки сторони захисту</span></div></div>
+    </div>
+    <div class="reveal">
+      <h3 style="font-size:18px">Всередині — 8-етапний ШІ-аналіз</h3>
+      <div class="steps"><div class="step"><span class="i">1</span><p>Когерентність і зв'язність документів</p></div><div class="step"><span class="i">2</span><p>Виявлення суперечностей між показаннями</p></div><div class="step"><span class="i">3</span><p>Контекстний аналіз — послідовність і логіка</p></div><div class="step"><span class="i">4</span><p>Оцінка якості доказів</p></div><div class="step"><span class="i">5</span><p>Відповідність нормам законодавства</p></div><div class="step"><span class="i">6</span><p>Коректність юридичної термінології</p></div><div class="step"><span class="i">7</span><p>Оцінка ризиків і вразливостей</p></div><div class="step"><span class="i">8</span><p>Підсумковий висновок готовності</p></div></div>
+    </div>
+  </div>
+  <div class="ribbon reveal"><span class="r">⚖</span><p>Ключова перевага: числова оцінка готовності справи (0–100). Жоден конкурент на ринку не пропонує аналога.</p></div>
+</div></section>
+<section id="security"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Безпека</p><h2>Безпека на рівні архітектури, а не обіцянок</h2><p class="lead">Parselex спроєктований під вимоги конфіденційності юридичної та банківської практики: Zero-Trust доступ, анонімізація на пристрої та розгортання всередині власного периметра.</p></div>
+  <div class="grid2 reveal"><div class="card"><div class="ic">⛨</div><h3>LexZTNA — Zero-Trust доступ</h3><p>Жодних публічних ендпоінтів. Робочі простори доступні лише через захищений клієнт LexZTNA — шифровані mesh-тунелі, верифікація пристроїв, доступ з мінімальними привілеями.</p></div><div class="card"><div class="ic">⚿</div><h3>Етичний брандмауер — редагування PII</h3><p>Імена, ідентифікатори та номери рахунків замінюються детермінованими токенами на вашому пристрої до передачі — одне значення перетворюється на один токен, тож ШІ зберігає зв'язність сутностей. Відновлення відбувається локально на зворотному шляху.</p></div><div class="card"><div class="ic">⚙</div><h3>Розгортання on-premise</h3><p>Відкриті моделі працюють усередині вашої інфраструктури: інференс і смисловий пошук не звертаються до зовнішніх ШІ-API, документи не залишають ваш периметр.</p></div><div class="card"><div class="ic">✓</div><h3>Комплаєнс та аудит</h3><p>Ізоляція даних per-user, повний журнал дій і перевірка прав на кожній операції — вбудовується у політики інформаційної безпеки. Мінімізація даних за GDPR, CCPA та ABA Model Rule 1.6.</p></div></div>
+  <p class="softstrip reveal" style="margin-top:22px">→ <b>Пілот за 4–8 тижнів</b> — на ваших документах усередині захищеного контуру → оцінка готовності справи (0–100) → контракт Professional або Enterprise</p>
+</div></section>
+<section id="architecture" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Під капотом</p><h2>Багаторівнева система ШІ</h2><p class="lead">Каскад ШІ-моделей без прив'язки до одного вендора — від вбудовування та пошуку до генерації тексту й оцінки справ.</p></div>
+  <h3 class="reveal" style="font-size:17px">Конвеєр обробки з 7 етапів</h3>
+  <div class="chips reveal"><span class="chip">Ingest</span><span class="ar">→</span><span class="chip">OCR</span><span class="ar">→</span><span class="chip">Classification</span><span class="ar">→</span><span class="chip">Validation</span><span class="ar">→</span><span class="chip">RAG Analysis</span><span class="ar">→</span><span class="chip">AI Translation</span><span class="ar">→</span><span class="chip">Report</span></div>
+  <h3 class="reveal" style="font-size:17px;margin-top:34px">Каскад моделей з 4 рівнів — робота не зупиняється</h3>
+  <div class="casc cascade reveal"><div class="card"><div class="cn">01</div><h3 style="margin-top:6px;font-size:15px">Основна хмарна модель</h3><p style="font-size:13.5px">Швидка та економічна для повсякденного навантаження</p></div><div class="card"><div class="cn">02</div><h3 style="margin-top:6px;font-size:15px">Другий хмарний провайдер</h3><p style="font-size:13.5px">Автоматичне резервування — процес не переривається</p></div><div class="card"><div class="cn">03</div><h3 style="margin-top:6px;font-size:15px">Локальна модель on-premise</h3><p style="font-size:13.5px">Працює всередині вашого периметра, нульова вартість запитів</p></div><div class="card"><div class="cn">04</div><h3 style="margin-top:6px;font-size:15px">Додатковий резерв</h3><p style="font-size:13.5px">Безперервність роботи навіть під час збоїв постачальників</p></div></div>
+  <p class="softstrip reveal">Багатомовний смисловий пошук — EN · RU · HI · NP · KZ · TR — з автовибором юрисдикції. <b>Розгортання всередині вашого периметра:</b> відкриті моделі, жодних звернень до зовнішніх ШІ-API, документи не передаються стороннім сервісам.</p>
+</div></section>
+<section id="product"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Продукт</p><h2>Єдине робоче місце на весь цикл справи</h2><p class="lead">Один веб-інтерфейс від завантаження документів до оцінки готовності — дванадцять модулів покривають повний цикл.</p></div>
+  <div class="mods reveal"><div class="mod"><div class="mg">◌</div><b>ШІ-чат по справі</b><p>відповіді з посиланнями на конкретні документи</p></div><div class="mod"><div class="mg">▤</div><b>Документи</b><p>завантаження, пошук і керування документами справи</p></div><div class="mod"><div class="mg">▦</div><b>Бібліотека</b><p>каталог юридичних документів з категоризацією</p></div><div class="mod"><div class="mg">✎</div><b>Складання</b><p>проєкти юридичних документів із ШІ-помічником</p></div><div class="mod"><div class="mg">▦</div><b>Аналіз</b><p>замкнений цикл аналізу з трекінгом ітерацій</p></div><div class="mod"><div class="mg">✓</div><b>Оцінка справи</b><p>оцінка 0–100, прив'язка доказів, gap-аналіз</p></div><div class="mod"><div class="mg">◯</div><b>Юрисдикція</b><p>7 доменів: кримінальне, цивільне, AML/KYC, IP</p></div><div class="mod"><div class="mg">✿</div><b>Конвеєр</b><p>масова обробка документів: статус та історія</p></div><div class="mod"><div class="mg">▦</div><b>Модулі</b><p>гнучкі розширення під задачі клієнта</p></div><div class="mod"><div class="mg">⚙</div><b>Опції</b><p>налаштування платформи під практики клієнта</p></div><div class="mod"><div class="mg">♟</div><b>Користувачі</b><p>керування доступом і журнал дій</p></div><div class="mod"><div class="mg">▦</div><b>Аналітика корпусу</b><p>статистика та моніторинг обробки</p></div></div>
+</div></section>
+<section id="metrics" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Докази</p><h2>Підтверджено реальними справами</h2><p class="lead">Цифри бойових оброблень — не демо-умови.</p></div>
+  <div class="mstats"><div class="mstat reveal"><div class="n">99,6%</div><div class="l">успішних оброблень</div></div><div class="mstat reveal"><div class="n">95%</div><div class="l">метаданих витягується автоматично</div></div><div class="mstat reveal"><div class="n">2 500+</div><div class="l">документів у бойових пайплайнах</div></div><div class="mstat reveal"><div class="n">2 309</div><div class="l">автоматичних перевірок на реліз</div></div><div class="mstat reveal"><div class="n">7</div><div class="l">категорій аналітики</div></div><div class="mstat reveal"><div class="n">4</div><div class="l">юрисдикції в одній живій справі</div></div></div>
+  <div class="casecard reveal">
+    <div><p class="ct">Реальна справа</p><h3 style="margin-top:8px">Кросс-борд переслідування за криптошахрайство</h3>
+    <p style="color:rgba(255,255,255,.75);font-size:14px;margin-top:12px">Організована схема шахрайства, що розслідується одразу у чотирьох юрисдикціях, — справа цілком проходить через платформу: від завантаження до оцінки готовності.</p></div>
+    <div class="rows"><div class="crow"><span>Обвинувачені</span><b>9 · 4 юрисдикції</b></div><div class="crow"><span>Оброблено документів</span><b>91</b></div><div class="crow"><span>Фрагментів у базі знань</span><b>792 · усе доступно ШІ</b></div><div class="crow"><span>Виділено релевантних</span><b>52</b></div><div class="crow"><span>Домен</span><b>кримінальне право · блокчейн</b></div></div>
+  </div>
+  <h3 class="reveal" style="margin-top:30px;font-size:17px">Інженерна якість</h3>
+  <div class="qlist reveal"><div>Автоперевірка релізів — кожен реліз проходить повний цикл перевірок</div><div>Автотести — 2 309 автоматичних перевірок коду</div><div>Автоматичні перевірки ключових сценаріїв інтерфейсу</div><div>Щотижневий замір якості пошуку в бою</div></div>
+</div></section>
+<section id="compare"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Конкурентне поле</p><h2>Місце Parselex на ринку</h2><p class="lead">Ринок поділяється на три групи — і кожна зупиняється там, де починається справжня робота зі справою.</p></div>
+  <div class="cmp"><div class="card reveal"><div class="grp"><b>Гіганти LegalTech</b><p class="who">Thomson Reuters (Westlaw, CoCounsel) · LexisNexis</p><p class="lim"><span>⊗</span>Фокус на базах даних та дослідженнях; точність 42–65%, галюцинації до 33%.</p></div><p class="win"><span><b>Глибока експертиза справи замість пошуку —</b> система оцінює готовність справи, а не просто знаходить документи.</span></p></div><div class="card reveal"><div class="grp"><b>ШІ-асистенти для юристів</b><p class="who">Harvey · Spellbook · Kannon</p><p class="lim"><span>⊗</span>Глибина обмежена генерацією; оцінка справи відсутня; вузькі інтеграції.</p></div><p class="win"><span><b>Автономний аналіз і gap-аналіз —</b> експертиза, що виявляє прогалини без людини на кожному кроці.</span></p></div><div class="card reveal"><div class="grp"><b>Платформи автоматизації</b><p class="who">LexCheck · Luminance · Ironclad</p><p class="lim"><span>⊗</span>Здебільшого контракти та due diligence; юрисдикції зазвичай обмежені.</p></div><p class="win"><span><b>7 юридичних доменів і 4 регіони —</b> кримінальне, цивільне, комерційне право, AML та інші з регіональною специфікою.</span></p></div></div>
+  <div class="ribbon reveal"><span class="r">✓</span><p>Ключова перевага: числова оцінка готовності справи (0–100) — у жодного конкурента аналога немає.</p></div>
+</div></section>
+<section id="pricing" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Монетизація</p><h2>Гібридна модель, enterprise-рівень</h2><p class="lead">SaaS-підписки для команд і корпоративні рішення з локальним розгортанням та донавчанням моделей — під різні сегменти юридичного ринку.</p></div>
+  <div class="tiers"><div class="tier reveal"><div class="tn">Starter</div><div class="tf">Для пілотів і невеликих команд</div><ul><li>Корпус до 500 документів</li><li>ШІ-пошук і класифікація документів</li><li>Базові автоперевірки</li><li>Підтримка email</li></ul><a class="btn btn-navy" href="https://parselex.app/login/">Запустити пілот</a></div><div class="tier hot reveal"><span class="pop">Рекомендований</span><div class="tn">Professional</div><div class="tf">Для робочих юридичних команд</div><ul><li>Корпус до 5 000 документів</li><li>Усі модулі платформи</li><li>Оцінка готовності справи</li><li>Пріоритетна підтримка</li></ul><a class="btn btn-gold" href="https://parselex.app/login/">Запросити тариф</a></div><div class="tier reveal"><div class="tn">Enterprise</div><div class="tf">Для установ і банків</div><ul><li>Необмежений корпус</li><li>Локальне розгортання всередині вашого периметра</li><li>Донавчання ШІ-моделей під клієнта</li><li>Виділена підтримка + SLA</li><li>Custom-інтеграції</li></ul><a class="btn btn-navy" href="https://parselex.app/login/">Обговорити проєкт</a></div></div>
+  <p class="pnote">Канали продажів: прямі продажі · пілотні проєкти · партнерська мережа. Тарифи — за запитом.</p>
+</div></section>
+<section id="market"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Ринок</p><h2>Ринок, що зростає експоненційно</h2><p class="lead">Світовий LegalTech масштабується стрімко, а Parselex посідає унікальну нішу на перехресті ШІ та юридичної аналітики документів.</p></div>
+  <div class="mcards"><div class="card mcard reveal"><p class="mt">TAM — увесь ринок</p><div class="mn" style="margin-top:6px">$300 млрд до 2028</div><p style="margin-top:8px">Глобальний LegalTech досяг $49 млрд у 2024 році з прогнозом $300 млрд до 2028 (CAGR 9,4%) — аналітика документів, комплаєнс та автоматизація.</p></div><div class="card mcard reveal"><p class="mt">SAM — доступний ринок</p><div class="mn" style="margin-top:6px">Найшвидкоростучіший сегмент</div><p style="margin-top:8px">ШІ-аналітика документів. Parselex націлений на 7+ юридичних доменів і 4 ключових регіони — сотні тисяч фірм, слідчих органів і консалтингових компаній по всьому світу.</p></div><div class="card mcard reveal"><p class="mt">SOM — точка входу</p><div class="mn" style="margin-top:6px">Спочатку Індія та СНД</div><p style="margin-top:8px">Конкретний вимірюваний сегмент, де продукт уже протестовано, — перші доходи через пілоти та підписки Professional / Enterprise, далі масштабування по регіонах.</p></div></div>
+</div></section>
+<section id="roadmap" class="alt"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Траєкторія</p><h2>Динаміка розвитку</h2><p class="lead">Від старту проєкту до бойових пайплайнів за один рік — і зрозумілий шлях масштабування далі.</p></div>
+  <div class="timeline reveal" style="max-width:640px"><div class="tl"><span class="yr">2026</span><b>Старт проєкту</b><span>Платформа задумана і спроєктована навколо живих справ.</span></div><div class="tl"><span class="yr">2026</span><b>Перший реліз</b><span>Працюючий продукт з набором автотестів.</span></div><div class="tl"><span class="yr">2026</span><b>Єдиний ШІ-хаб</b><span>40 інструментів для агентів під одним оркестратором.</span></div><div class="tl"><span class="yr">2026</span><b>2 500+ документів у бою</b><span>Бойові пайплайни клієнта обробляють реальні справи.</span></div><div class="tl"><span class="yr">2027</span><b>SaaS-масштабування</b><span>Multi-tenancy, нові ринки, інтеграції та мобільний застосунок.</span></div></div>
+</div></section>
+<section id="about"><div class="wrap">
+  <div class="head reveal"><p class="kicker">Хто стоїть за Parselex</p><h2>Створено засновником, а не комітетом</h2>
+    <p style="margin-top:14px"><span class="tag">Самофінансування · Керується засновником · Незалежний</span></p></div>
+  <div class="grid2 reveal">
+    <div class="card"><p style="margin-top:0;font-size:15px">Parselex створює та розвиває практикуючий засновник, який працює з живими юридичними справами власноруч — продукт сформований реальними кримінальними, цивільними та фінансовими справами, а не маркетинговими дослідженнями. Платформа виросла з практики: кожна можливість відповідає на проблему, зустрінуту у бойовому провадженні.</p></div>
+    <div class="card"><p style="margin-top:0;font-size:15px">Проєкт працює як компактна самофінансована операція з незвично сильною інженерною культурою: 2 309 автоматичних перевірок на реліз, щотижневий замір якості пошуку та мультиагентна інфраструктура (40 інструментів під одним оркестратором). Компанія перебуває у процесі інкорпорації; реквізити юридичної особи буде опубліковано на цій сторінці після завершення.</p></div>
+  </div>
+  <div style="margin-top:22px" class="reveal"><a class="btn btn-line" href="https://www.linkedin.com/company/parselex" target="_blank" rel="noopener">in&nbsp;·&nbsp;Напишіть у LinkedIn</a></div>
+</div></section>
+<section id="get-started"><div class="wrap">
+  <div class="ctaband reveal">
+    <h2 style="color:#fff">Почніть працювати з Parselex</h2>
+    <p style="color:rgba(255,255,255,.8);font-size:16.5px;max-width:620px;margin:14px auto 0">Проведіть першу справу через платформу або почніть з архітектурної документації — глибокі матеріали живуть на docs.parselex.app.</p>
+    <div class="ctas"><a class="btn btn-gold" href="https://parselex.app/login/">Відкрити Parselex</a>
+    <a class="btn btn-ghost" href="https://docs.parselex.app" target="_blank" rel="noopener">Вивчити документацію</a></div>
+  </div>
+</div></section>
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <a class="flogo" href="#"><span class="mark"><svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' focusable='false'><circle cx='12' cy='4.3' r='1.15'/><path d='M12 4.3V17.7M4.6 6.5h14.8' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><path d='M5 6.9 2.9 10.7M5 6.9l2.1 3.8M19 6.9l-2.1 3.8M19 6.9l2.1 3.8' fill='none' stroke='currentColor' stroke-width='.95' stroke-linecap='round'/><path d='M2.9 10.7a2.1 1.55 0 0 0 4.2 0Zm14 0a2.1 1.55 0 0 0 4.2 0Z'/><path d='M9.9 19h4.2M8.9 20.5h6.2' fill='none' stroke='currentColor' stroke-width='1.4' stroke-linecap='round'/></svg></span>PARSELEX</a>
+      <p style="margin-top:14px;max-width:320px">Платформа інтелектуального аналізу юридичних документів — від будь-якого джерела до об'єктивної оцінки готовності справи.</p>
+      <p style="margin-top:10px">Архітектурні дослідження, безпека та RAG-бенчмарк живуть на <a href="https://docs.parselex.app" target="_blank" rel="noopener" style="color:var(--gold2);font-weight:600">docs.parselex.app</a></p>
+    </div>
+    <div><h4>Платформа</h4><div class="fl"><a href="https://parselex.app/login/">Відкрити застосунок</a><a href="https://docs.parselex.app" target="_blank" rel="noopener">Документація</a><a href="https://docs.parselex.app/security/">Архітектура безпеки</a><a href="https://docs.parselex.app/benchmark/">RAG-бенчмарк</a><a href="https://parselex.app/changelog/">Changelog</a><a href="https://www.linkedin.com/company/parselex" target="_blank" rel="noopener">LinkedIn</a></div></div>
+    <div><h4>Правові документи</h4><div class="fl"><a href="https://docs.parselex.app/uk/legal/privacy/">Конфіденційність</a><a href="https://docs.parselex.app/uk/legal/personal-data/">Використання персональних даних</a><a href="https://docs.parselex.app/uk/legal/cookies/">Cookies</a><a href="https://docs.parselex.app/uk/legal/terms/">Умови обслуговування</a><a href="https://docs.parselex.app/uk/legal/payments/">Регулярні платежі</a><a href="https://docs.parselex.app/uk/legal/disclaimer/">Дисклеймер ШІ</a></div></div>
+  </div>
+  <div class="fbottom"><span>Підтримка&nbsp;·&nbsp;parselex@googlegroups.com</span><span>© 2026 Parselex — платформа інтелектуального аналізу юридичних документів</span></div>
+</div></footer>
+<script>
+var b=document.getElementById('burger'),n=document.getElementById('navlinks');
+if(b){b.addEventListener('click',function(){n.classList.toggle('open')});
+n.addEventListener('click',function(){n.classList.remove('open')})}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){
+es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},
+{threshold:.08});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)})}
+else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
+</script></body>
+</html>
